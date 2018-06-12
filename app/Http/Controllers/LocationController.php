@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\tp_location;
+use App\Location;
 class LocationController extends Controller
 {
 	private $location, $limit =10;
-	public function __construct(tp_location $location){
+	public function __construct(Location $location){
 		$this->location = $location;
 		
 	}
@@ -27,18 +27,19 @@ class LocationController extends Controller
     
     public function index(Request $request)
     {
-		//$location = $this->location->all();
-       $location = $this->location->select('locationName')->get();
-         if ($request->isMethod('post')){    
-            //return $location;
-             return json_encode($location);
-            // return response()->json(['response' => 'This is post method']); 
-         }
-        //return json_encode($location);
-       // return response()->json(['response' => $location]);
-		//return view("main/index")->with('data', json_encode($location));
-         return response()->json($location); 
-        return null;
+        $location = Location::ActiveLocation();
+		// //$location = $this->location->all();
+  //      $location = $this->location->select('locationName')->get();
+  //        if ($request->isMethod('post')){    
+  //           //return $location;
+  //            return json_encode($location);
+  //           // return response()->json(['response' => 'This is post method']); 
+  //        }
+  //       //return json_encode($location);
+  //      // return response()->json(['response' => $location]);
+		return view("main/index")->with('data',$location);
+  //        return response()->json($location); 
+  //       return null;
 
     }
 
