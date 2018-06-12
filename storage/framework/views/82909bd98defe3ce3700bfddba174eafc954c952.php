@@ -1,3 +1,7 @@
+<?php 
+// dd($data);
+?>
+
 <?php $__env->startSection('title'); ?>
 	<title>The Bee Go</title>
 <?php $__env->stopSection(); ?>
