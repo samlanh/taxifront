@@ -1,5 +1,7 @@
 @extends('layout.main')
-
+<?php 
+// dd($data);
+?>
 
 @section('title')
 	<title>The Bee Go</title>

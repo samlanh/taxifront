@@ -1,5 +1,23 @@
 <!DOCTYPE html>
-<?php //echo $data;?>
+<?php //echo $data;
+?>
+
+ <?php 
+  $loca="";
+              if (!empty($main)){
+                  $loca='';
+                   foreach ($main as $key => $value){
+                      if (empty($loca)) {
+
+                        $loca = "'".$value->locationName."'";
+                      }else{
+                        $loca = $loca.","."'".$value->locationName."'";
+                      }
+
+                   }
+               }
+            
+          ?>
 <html lang="en-us">
   <head>
 
@@ -85,7 +103,7 @@
                   <div class="header-login">
                     <button class="header-btn">
                     <i class="fa fa-key"></i>
-                    Login
+                    {{ trans('language.sign_in') }}
                     </button>
                     
                   </div>
@@ -95,14 +113,18 @@
                   <div class="header-language">
                     <button class="header-btn">
                     <i class="fa fa-globe"></i>
-					<img src="{{ asset('assets/img/eng.png') }}" />
+                    
+                    @if(App::getLocale()=="en")
+                          <img src="{{ asset('assets/img/eng.png') }}" />
+                     @else
+                      <img src="{{ asset('assets/img/kh.png') }}" />
+                   @endif
                   
                     </button>
                     <nav class="header-form">
                       <ul class="custom-list">
-                        <li class="active"><a href="#"><img src="{{ asset('assets/img/eng.png') }}" /></a></li>
-                        <li><a href="#"><img src="{{ asset('assets/img/kh.png') }}" /></a></li>
-                        
+                        <li class="<?php  if(App::getLocale()=="en"){ echo "active"; }?>"><a href="javascript:;" onclick="changeLang('en')"><img src="{{ asset('assets/img/eng.png') }}" /></a></li>
+                        <li class="<?php  if(App::getLocale()=="km"){ echo "active"; }?>"><a href="javascript:;" onclick="changeLang('km')"><img src="{{ asset('assets/img/kh.png') }}" /></a></li>
                       </ul>
                     </nav>
                   </div>
@@ -130,7 +152,7 @@
                   <nav role="navigation">
                     <ul class="nav navbar-nav">
                       <li class="has-submenu">
-                        <a href="index.html" class="active">Home</a>
+                        <a href="index.html" class="active">{{ trans('language.home') }}</a>
                         <ul class="sub-menu custom-list">
                           <li><a href="index2.html">Homepage 2</a></li>
                           <li><a href="index3.html">Homepage 3</a></li>
@@ -226,7 +248,7 @@
                   <div id="hero-tabs" class="banner-search-inner">
           <div class="container">
             <ul class="custom-list tab-title-list clearfix">
-              <li class="tab-title active"><a href="#cartrans">Private Taxi</a></li>
+              <li class="tab-title active"><a href="#cartrans">{{ trans('language.private_taxi') }}</a></li>
             </ul>
           </div>
                     <ul class="custom-list tab-content-list">
@@ -238,7 +260,7 @@
                               <div class="blogform">
                                 <div class="inlineform">
                                   <div id="pickuplocation-menu">
-                                    <input class="typeahead" type="text" placeholder="Pick up location">
+                                    <input class="typeahead" type="text" name="pick-up-location" placeholder="{{ trans('language.pick_up_location') }}">
                                   </div>
                                 </div>
                                 <div class="switcharrowbutton">
@@ -246,7 +268,7 @@
                                 </div>
                                 <div class="inlineform">
                                   <div id="droplocation-menu">
-                                    <input class="typeahead" type="text" placeholder="Drop location">
+                                    <input class="typeahead" type="text" name="drop-location" placeholder="{{ trans('language.drop_location') }}">
                                   </div>
                                 </div>
                                 <div class="inlineform">
@@ -254,7 +276,7 @@
                                   <input id="delyveryDate" name="delyveryDate" type="hidden" style="width: 100%">
                                 </div>
                                 <div class="inlineform">
-                                  <button class="btn light">Book Now</button>                      
+                                  <button class="btn light">{{ trans('language.find_vihecle') }}</button>                      
                                 </div>
                               </div>
                             </div>
@@ -362,23 +384,13 @@
 	<script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
 	<script>
     var states = [];
-          var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-            'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-            'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-            'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-            'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-            'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-            'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-            'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-            'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-          ];
+          var states = [<?php echo $loca;?>];
+
+         
+         
 	$(document).ready(function() {
-					
-        //   $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
+					console.log(states);
+          
         //   jQuery.ajax({
         //       url: "{{ URL::to('/location') }}",
         //       type: 'POST',
@@ -398,7 +410,9 @@
 
                 });
 	</script>
+  <script src="{{ asset('assets/js/script-custome.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  
 	@yield('script')
   </body>
 </html>
