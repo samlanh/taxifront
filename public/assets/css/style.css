@@ -59,6 +59,14 @@
     GENERAL
 
 ----------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Khmer OS Battambang';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Battambang Regular'), local('Battambang-Regular'), url(fonts/KhmerOSBattambang-Regular.ttf) format('ttf');
+  unicode-range: U+1780-17FF, U+200C, U+25CC;
+}
+
 html { 
   font: normal normal 14px/30px 'Roboto Slab', sans-serif;
   color: #1a1a1a;
@@ -74,7 +82,7 @@ html {
 ------------------------------------------------------------------------- */
 h1,h2,h3,h4,h5,h6,hgroup,form,ul,ol,dd,figure,pre,table,button,fieldset,hr,iframe {
   margin: 0;
-  font-family: 'crimson text', sans-serif;
+  font-family: 'crimson text', sans-serif,'Khmer OS Battambang';
 }
 
 h1 {
@@ -119,12 +127,12 @@ h6 {
 
 p { 
   margin: 0;
-  font: normal normal 14px/30px 'Roboto Slab', sans-serif;
+  font: normal normal 14px/30px 'Roboto Slab', sans-serif,'Khmer OS Battambang';
 }
 
 
 li { 
-  font: normal normal 14px/30px 'Roboto Slab', sans-serif; 
+  font: normal normal 14px/30px 'Roboto Slab', sans-serif,'Khmer OS Battambang'; 
   list-style-type: none;
   color: #1a1a1a;
 }
@@ -195,7 +203,7 @@ ul > li:last-child { margin-right: 0;}
 }
 
 .default-form label {
-  font: normal normal 14px/30px 'Roboto Slab', sans-serif; 
+  font: normal normal 14px/30px 'Roboto Slab', sans-serif,'Khmer OS Battambang'; 
   color: #1a1a1a;
 }
 
@@ -486,7 +494,7 @@ ul > li:last-child { margin-right: 0;}
 ------------------------------------------------------------------------- */
 table { 
   width: 100%; 
-  font-family: 'roboto slab',sans-serif;
+  font-family: 'roboto slab',sans-serif,'Khmer OS Battambang';
 }
 
 table th { 
@@ -499,7 +507,7 @@ table th {
 
 table td { 
   padding: 10px 20px; 
-  font-family: 'roboto slab';
+  font-family: 'roboto slab','Khmer OS Battambang';
   border-bottom: 1px solid transparent; 
 }
 
@@ -816,7 +824,7 @@ table td { border-color: #e5e5e5; }
 .radial-progress-bar .loader-spiner {  border-color: #423338;  }
 
 .radial-progress-bar .text { 
-  font-family: 'crimson text', sans-serif;
+  font-family: 'crimson text', sans-serif,'Khmer OS Battambang';
   font-size: 30px;
   color: #1a1a1a; 
 }
@@ -850,7 +858,7 @@ button:hover {
   padding: 13px 14px;
   border-radius: 0;
   font-weight: bold;
-  font-family: 'roboto slab', sans-serif;
+  font-family: 'roboto slab', sans-serif,'Khmer OS Battambang';
   vertical-align: inherit;
   text-transform: uppercase;
   -webkit-transition: all .3s ease-in-out;
@@ -1395,7 +1403,7 @@ button:hover {
 
 #header .header-login .forgot-password { 
   margin-bottom: 0; 
-  font-family: 'roboto slab', sans-serif;
+  font-family: 'roboto slab', sans-serif,'Khmer OS Battambang';
 }
 
 /* -------------------------------------------------------------------------
@@ -3058,7 +3066,7 @@ button:hover {
 .testimonials blockquote {
   padding: 0;
   margin: 20px 0 45px 0;
-  font-family: 'roboto slab', sans-serif;
+  font-family: 'roboto slab', sans-serif,'Khmer OS Battambang';
   font-size: 14px;
   line-height: 30px;
   text-align: center;
@@ -3154,7 +3162,7 @@ button:hover {
 .tabs-navigation .tab-title-list li p,
 .tabs-content .tab-content-list h5,
 .tabs-content .tab-content-list p {
-  font-family: 'roboto slab',sans-serif;
+  font-family: 'roboto slab',sans-serif,'Khmer OS Battambang';
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -3192,7 +3200,7 @@ button:hover {
   bottom: 35px;
   left: 50px;
   right: 50px;
-  font-family: 'roboto slab', sans-serif;
+  font-family: 'roboto slab', sans-serif,'Khmer OS Battambang';
 }
 
 /* -----------------------------------------------------------------------------
@@ -3206,7 +3214,7 @@ button:hover {
 
 .package { 
   margin-top: 20px; 
-  font-family: 'crimson text'; 
+  font-family: 'crimson text','Khmer OS Battambang'; 
   text-align: center;
 }
 
@@ -3604,7 +3612,7 @@ section.choose-taxi {
 	border: none;
      background: #fff; 
     font-size: 1em;
-    font-family: sans-serif;
+    font-family: sans-serif,'Khmer OS Battambang';
     line-height: normal;
     border-radius: 0;
 }
