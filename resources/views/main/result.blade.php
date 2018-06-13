@@ -1,8 +1,10 @@
 @extends('layout.main')
-
+@php
+$urlFromBack = Config::get('constants.myConstant.weburlpart');
+@endphp
 
 @section('title')
-	<title>Result Vihecle</title>
+	<title>{{trans('language.transfer_from')}}</title>
 @stop
 
 @section('style')
@@ -11,7 +13,7 @@
 
 @section('content')
 	
-    <section class="fleets">
+    <section class="vehicle-list">
       <div class="container">
         <div class="row">
               
@@ -20,211 +22,62 @@
             <div class="fleet-listing">
 
               <!-- Start Fleet-List -->
-				@for ($i = 0; $i <= 2; $i++)
+				@foreach ($data as $vehicle)
                 <div class="vechicle-list">
-                  <div class="col-md-4 col-xs-12 col-sm-12  thumb">
+                  <div class="col-md-3 col-xs-12 col-sm-12  thumb">
                     <div class="overlay">
-                      <img src="{{ asset('assets/img/fleet-vechicle.png') }}" alt="">
+                      <img src="{{ $urlFromBack.'/all/'.$vehicle->vhicleImages }}" alt="">
                       
                     </div>
                   </div>
-                  <div class="col-md-8 col-xs-12 col-sm-12 content fleet-vechicle-content">
+                  <div class="col-md-6 col-xs-12 col-sm-12 content fleet-vechicle-content">
                     <header class="vechicle-header">
 						<div class="vechicle-header-left">
-							<h5><img src="{{ asset('assets/img/medium_vet-express-compressor.png') }}" /> Virak Buntham </h5>
+							<h5><img src="{{ $urlFromBack.'/all/supplyerlogo/'.$vehicle->supplierLogo }}" /> {{ $vehicle->supplierCompany }} </h5>
 						</div>
+						<?php if(!empty($vehicle->discount)){?>
 						<div class="vechicle-header-right">
 							<span class="block-discount">16% off</span>
-						</div>                      
+						</div>
+						<?php }?>                      
                     </header>
                     <div class="col-lg-12">
-						<div class="col-md-8 col-xs-12 col-sm-12">
+						
 							<div class="option-car">
 								<ul>
-									<li><i class="fa fa-user" aria-hidden="true"></i>&nbsp; 6 Passengers</li>
-									<li><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; 4 bags</li>
-									<li><i class="fa fa-car" aria-hidden="true"></i>&nbsp; SUV</li>
+									<li title="{{ trans('language.passengers') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; {{$vehicle->amountSeat}} {{ trans('language.passengers') }}</li>
+									<li title="{{ trans('language.bags') }}"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; {{$vehicle->amountCase}}  {{ trans('language.bags') }}</li>
+									<li title="{{ trans('language.vihecle_type') }}"><i class="fa fa-car" aria-hidden="true"></i>&nbsp; {{$vehicle->vehicleType}}</li>
 								</ul>
 							</div>
 							<div class="description">
-								<p>Luggage Allowance: Big Suitcase: 2; Small Suitcase: 2 *WE CHARGE ADDITIONAL 5$ ON PUBLIC HOLIDAYS</p>
+								<p>{{$vehicle->description}}</p>
 							</div>
-						</div>
-						<div class="col-md-4 col-xs-12 col-sm-12 text-center">
-							<span class="price old-price">USD 1009</span>
-								<br />
-							<span class="price">USD 899</span>
-							<br />
-							<button class="btn light">Book Now</button>
-						</div>
+					
+						
 					</div>
                   </div>
+				  <div class="col-md-3 col-xs-12 col-sm-12 text-center  blog-price">
+						<div class="vehicle-row-price">
+							<?php if(!empty($vehicle->discount)){?>
+							<span class="price old-price">USD {{$vehicle->price}}</span>
+								<br />
+							<span class="price">USD {{$vehicle->price}}</span>
+							<?php }else{?>
+								<span class="price">USD {{$vehicle->price}}</span>
+							<?php }?>
+						</div>
+						<div class="row-button">	
+							<button class="btn light book-btn">{{ trans('language.book_now') }}</button>
+						</div>
+					</div>
+				 
 				  <div class="clearfix"></div>                 
                 </div>
-				 
+				 @endforeach
 
-                <div class="vechicle-list">
-                  <div class="col-md-4 col-xs-12 col-sm-12  thumb">
-                    <div class="overlay">
-                      <img src="{{ asset('assets/img/fleet-vechicle2.png') }}" alt="">
-                      
-                    </div>
-                  </div>
-                 <div class="col-md-8 col-xs-12 col-sm-12 content fleet-vechicle-content">
-                    <header class="vechicle-header">
-						<div class="vechicle-header-left">
-                       <h5><img src="{{ asset('assets/img/medium_KSO-bus-logo-compressor.png') }}" /> KSO</h5>
-					   </div>
-                      <div class="vechicle-header-right">
-							
-						</div>
-                    </header>
-					<div class="col-lg-12">
-						<div class="col-md-8 col-xs-12 col-sm-12">
-							<div class="option-car">
-								<ul>
-									<li><i class="fa fa-user" aria-hidden="true"></i>&nbsp; 6 Passengers</li>
-									<li><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; 4 bags</li>
-									<li><i class="fa fa-car" aria-hidden="true"></i>&nbsp; SUV</li>
-								</ul>
-							</div>
-							<div class="description">
-								<p>Luggage Allowance: Big Suitcase: 2; Small Suitcase: 2 *WE CHARGE ADDITIONAL 5$ ON PUBLIC HOLIDAYS</p>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12 col-sm-12 text-center">
-							
-							<span class="price">USD 899</span>
-							<br />
-							<button class="btn light">Book Now</button>
-						</div>
-					</div>
-                  </div>
-				  <div class="clearfix"></div>
-               </div>
-			   
-
-                <div class="vechicle-list">
-                  <div class="col-md-4 col-xs-12 col-sm-12  thumb">
-                    <div class="overlay">
-                      <img src="{{ asset('assets/img/fleet-vechicle3.png') }}" alt="">
-                      
-                    </div>
-                  </div>
-                 <div class="col-md-8 col-xs-12 col-sm-12 content fleet-vechicle-content">
-                    <header class="vechicle-header">
-						<div class="vechicle-header-left">
-							<h5><img src="{{ asset('assets/img/medium_mekong-express-new-compressor.png') }}" /> Mekong Express</h5>
-						</div>
-						<div class="vechicle-header-right">
-							
-						</div>
-                    </header>
-					<div class="col-lg-12">
-						<div class="col-md-8 col-xs-12 col-sm-12">
-							<div class="option-car">
-								<ul>
-									<li><i class="fa fa-user" aria-hidden="true"></i>&nbsp; 6 Passengers</li>
-									<li><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; 4 bags</li>
-									<li><i class="fa fa-car" aria-hidden="true"></i>&nbsp; SUV</li>
-								</ul>
-							</div>
-							<div class="description">
-								<p>Luggage Allowance: Big Suitcase: 2; Small Suitcase: 2 *WE CHARGE ADDITIONAL 5$ ON PUBLIC HOLIDAYS</p>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12 col-sm-12 text-center">
-							
-							<span class="price">USD 899</span>
-							<br />
-							<button class="btn light">Book Now</button>
-						</div>
-					</div>
-                  </div>
-				  <div class="clearfix"></div>
-               </div>
-			   
-
-                <div class="vechicle-list">
-                  <div class="col-md-4 col-xs-12 col-sm-12  thumb">
-                    <div class="overlay">
-                      <img src="{{ asset('assets/img/fleet-vechicle4.png') }}" alt="">
-                      
-                    </div>
-                  </div>
-                 <div class="col-md-8 col-xs-12 col-sm-12 content fleet-vechicle-content">
-                    <header class="vechicle-header">
-						<div class="vechicle-header-left">
-							<h5><img src="{{ asset('assets/img/medium_vet-express-compressor.png') }}" /> Virak Buntham</h5>
-						</div>
-						<div class="vechicle-header-right">
-							
-						</div>
-                    </header>
-                    <div class="col-lg-12">
-						<div class="col-md-8 col-xs-12 col-sm-12">
-							<div class="option-car">
-								<ul>
-									<li><i class="fa fa-user" aria-hidden="true"></i>&nbsp; 6 Passengers</li>
-									<li><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; 4 bags</li>
-									<li><i class="fa fa-car" aria-hidden="true"></i>&nbsp; SUV</li>
-								</ul>
-							</div>
-							<div class="description">
-								<p>Luggage Allowance: Big Suitcase: 2; Small Suitcase: 2 *WE CHARGE ADDITIONAL 5$ ON PUBLIC HOLIDAYS</p>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12 col-sm-12 text-center">
-							
-							<span class="price">USD 899</span>
-							<br />
-							<button class="btn light">Book Now</button>
-						</div>
-					</div>
-                  </div>
-				  <div class="clearfix"></div>
-               </div>
-			   
-
-                 <div class="vechicle-list">
-                  <div class="col-md-4 col-xs-12 col-sm-12  thumb">
-                    <div class="overlay">
-                      <img src="{{ asset('assets/img/fleet-vechicle3.png') }}" alt="">
-                      
-                    </div>
-                  </div>
-                 <div class="col-md-8 col-xs-12 col-sm-12 content fleet-vechicle-content">
-                    <header class="vechicle-header">
-						<div class="vechicle-header-left">
-							<h5><img src="{{ asset('assets/img/medium_vet-express-compressor.png') }}" /> Virak Buntham</h5>
-						</div>
-						<div class="vechicle-header-right">
-							
-						</div>
-                    </header>
-                    <div class="col-lg-12">
-						<div class="col-md-8 col-xs-12 col-sm-12">
-							<div class="option-car">
-								<ul>
-									<li><i class="fa fa-user" aria-hidden="true"></i>&nbsp; 6 Passengers</li>
-									<li><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; 4 bags</li>
-									<li><i class="fa fa-car" aria-hidden="true"></i>&nbsp; SUV</li>
-								</ul>
-							</div>
-							<div class="description">
-								<p>Luggage Allowance: Big Suitcase: 2; Small Suitcase: 2 *WE CHARGE ADDITIONAL 5$ ON PUBLIC HOLIDAYS</p>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12 col-sm-12 text-center">
-							<span class="price">USD 899</span>
-							<br />
-							<button class="btn light">Book Now</button>
-						</div>
-					</div>
-                  </div>
-				  <div class="clearfix"></div>
-                </div>
-				@endfor
+               
+				
               <!-- End Fleet-List -->
 
               <!-- Start Fleets-Listing-Footer -->

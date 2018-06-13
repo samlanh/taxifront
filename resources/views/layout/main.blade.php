@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<?php //echo $data;
-?>
-
+@php
+$urlFromBack = Config::get('constants.myConstant.weburlpart');
+@endphp
  <?php 
   $loca="";
               if (!empty($main)){
@@ -27,7 +27,7 @@
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     
 	@yield('title')
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{{ $urlFromBack.'/icon.ico'}}">
 
     <!-- GOOGLE FONTS
     <link href='//fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
@@ -301,7 +301,7 @@
 
           <!-- Start Preamble -->
           <div class="col-lg-12 preamble">
-            <img src="{{ asset('assets/img/footer-logo.png') }}" alt="">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="">
           </div>
           <!-- End Preamble -->
 
@@ -321,7 +321,7 @@
                 <h5>Newsletter</h5>
                 <form class="default-form">
                   <input type="text" name="newsletter" placeholder="Your Email Here">
-                  <button class="btn light">Sign Up</button>
+                  <button class="btn light">{{ trans('language.sign_up') }}</button>
                 </form>
               </div>
               <!-- End Widget-Newsletter -->
