@@ -12,7 +12,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 @stop
 
 @section('content')
-	
+	@include('layout.search')
     <section class="vehicle-list">
       <div class="container">
         <div class="row">

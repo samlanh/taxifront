@@ -12,6 +12,8 @@
 @stop
 
 @section('content')
+
+@include('layout.search')
 	 <!-- Start About -->
     <section class="about">
       <div class="container">
