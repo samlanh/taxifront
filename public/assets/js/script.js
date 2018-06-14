@@ -3,47 +3,27 @@ $(document).ready(function(){
   /* -------------------------------------------------------------------------
     DATEPICKER
   ------------------------------------------------------------------------- */
-	var dateValue = new Date('3/27/2018');
-	var events = [];
-		events = [
-		  new Date("3/27/2018"),
-		  new Date("3/28/2018"),
-		  new Date("3/29/2018"),
-		  new Date("3/30/2018"),
-		  new Date("3/31/2018"),
-		  new Date("4/1/2018"),
-		  new Date("4/2/2018"),
-		  new Date("4/3/2018"),
-		  new Date("4/4/2018"),
-		];
+	var pickupdate = $("#pickupdate").val();
+	var pickupdate = new Date(pickupdate);
+		
+	var dateNow = new Date();
+	
 
 	var datepicker = $("#calendar").kendoDatePicker({
 		change: onChange,
-		value: dateValue,
-		dates: events,
+		value: pickupdate,
+		min: new Date(dateNow),
 		footer: false,
+		header:false,
 		dateInput: true,
 		disableDates:true,
-		disableDates: function (date) {
-			var dates = $("#calendar").data("kendoDatePicker").options.dates;
-			if (date && compareDates(date, dates)) {
-				return false;
-			} else {
-				return true;
-			}
-		},
-		
+		 month: {
+			empty: '<span class="k-state-disabled">#= data.value #</span>'
+		  }
 	});
+	
 	$("#calendar").attr("disabled","disabled");
-	function compareDates(date, dates) {
-		for (var i = 0; i < dates.length; i++) {
-			if (dates[i].getDate() == date.getDate() &&
-				dates[i].getMonth() == date.getMonth() &&
-				dates[i].getYear() == date.getYear()) {
-			  return true
-			}
-		}
-	}
+	
 	
 	function onChange() {
 		var monthNames = [
@@ -67,7 +47,7 @@ $(document).ready(function(){
 		if(noDate<=9){
 			noDate="0"+noDate;
 		}
-		$("#delyveryDate").val(valueda.getDate()+'/'+valueda.getMonth()+'/'+valueda.getFullYear());
+		$("#pickupdate").val(valueda.getFullYear()+'/'+month+'/'+valueda.getDate());
 		
 		
 	}
@@ -100,7 +80,7 @@ $(document).ready(function(){
 		  minLength: 1
 		},
 		{
-		  name: 'pick-up-location',
+		  name: 'from_location',
 		  source: substringMatcher(states)
 		});
 
@@ -111,7 +91,7 @@ $(document).ready(function(){
 		  minLength: 1
 		},
 		{
-		  name: 'drop-location',
+		  name: 'to_location',
 		  source: substringMatcher(states)
 		});
     /* -------------------------------------------------------------------------
@@ -130,6 +110,16 @@ $(document).ready(function(){
 			} 
 	 });
 		 */
+		 
+	$( "#switchlocation" ).click(function() {
+		var from_location = $("input[name=from_location]").val();
+		var to_location = $("input[name=to_location]").val();
+		
+		$("input[name=from_location]").val(to_location);
+		$("input[name=to_location]").val(from_location);	
+	 
+	});
+
   /* -------------------------------------------------------------------------
     BANNER HEIGHT
   ------------------------------------------------------------------------- */
@@ -751,65 +741,23 @@ $(document).ready(function(){
 
     var self = $(this);
 
+	self.click(function() {
+		if (media_query_breakpoint > 991) {
+			self.find('.header-btn').addClass('hover');
+			self.find('.header-form').show();
+			self.find('.header-form ul').stop(true, true).slideDown(200);
+		  }
+    });
+	
     // HOVER
     self.hover(function() {
-      if (media_query_breakpoint > 991) {
-        self.find('.header-btn').addClass('hover');
-        self.find('.header-form').show();
-        self.find('.header-form ul').stop(true, true).slideDown(200);
-      }
+     
     }, function() {
       if (media_query_breakpoint > 991) {
         self.find('.header-btn').removeClass('hover');
         self.find('.header-form ul').stop(true, true).delay(10).slideUp(200, function() {
           self.find('.header-form').hide();
         });
-      }
-    });
-
-  });
-
-  /* -------------------------------------------------------------------------
-    HEADER LOGIN
-  ------------------------------------------------------------------------- */
-  $('.header-login').each(function() {
-
-    var self = $(this),
-      form_holder = self.find('.header-form'),
-      btn = self.find('.header-btn');
-
-    // HOVER
-    self.hover(function() {
-      if (media_query_breakpoint > 991) {
-        self.find('.header-btn').addClass('hover');
-        form_holder.stop(true, true).slideDown(200);
-      }
-    }, function() {
-      if (media_query_breakpoint > 991) {
-        self.find('.header-btn').removeClass('hover');
-        form_holder.stop(true, true).delay(10).slideUp(200);
-      }
-    });
-
-    // VALIDATE FORM
-    $( '.header-form' ).submit(function(){
-
-      var form = $(this);
-      if ( form.uouFormValid() ) {
-        form.find( '.alert-message.warning:visible' ).slideUp(300);
-      }
-      else {
-        form.find( '.alert-message.warning' ).slideDown(300);
-        return false;
-      }
-
-    });
-
-    // TOGGLE
-    btn.click(function() {
-      if (media_query_breakpoint <= 991) {
-        self.find('.header-btn').toggleClass('hover');
-        form_holder.stop(true, true).slideToggle(200);
       }
     });
 
