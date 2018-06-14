@@ -16,14 +16,10 @@ class MainServiceProvider extends ServiceProvider
     {
         //
         view()->composer('layout.main',function($view){
-            //  $main = DB::table('tp_locations')
-            // ->select(['locationName'])
-            // ->where(['status'=>1])
-            // ->orderBy('locationName','ASC')
-            // ->get();        
-            $main = Location::ActiveLocationName();    
-            // $main=  response()->json($main);       
-            $view->with(compact('main'));
+                 
+            $Location = Location::ActiveLocationName();    
+            $view->with(compact('Location'));
+
 
         });
     }

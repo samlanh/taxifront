@@ -19,8 +19,9 @@ class IndexController extends Controller
 		return view("main/index");
 	}
 	public function result(Request $request){
-			
-		$result = DB::select("SELECT
+		
+		$query="
+			SELECT
 			pd.`from_location`,
 			p.`supplyerId`,
 			(SELECT supplier.supplyerName FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierCompany,
@@ -40,7 +41,16 @@ class IndexController extends Controller
 			 `tp_price` AS p,
 			 `tp_vehicletype` AS vt
 			 WHERE p.`id`= pd.`price_id`
-			 AND vt.`id` = p.`vehicleType`");
+			 AND vt.`id` = p.`vehicleType`
+		";	
+		if ($request->has('from_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`from_location` LIMIT 1 ) ='$request->from_location' ";  
+		}
+		if ($request->has('to_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`to_location` LIMIT 1 ) ='$request->to_location' ";  
+		}		
+		$result = DB::select($query);		
+
 		return view('main.result', ['data' => $result]);
 	
 		// return view("main/result");

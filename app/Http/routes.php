@@ -21,6 +21,6 @@ Route::post('/locale', array(
      ));
 
 Route::get('/','IndexController@index');
-Route::get('/result','IndexController@result');
+Route::get('/search','IndexController@result');
 Route::get('/location','LocationController@index');
 Route::post('location', 'LocationController@index');
