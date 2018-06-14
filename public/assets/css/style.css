@@ -2874,7 +2874,13 @@ button:hover {
   cursor: pointer;
   color: #1a1a1a;
 }
-
+span.k-state-disabled {
+    min-height: 2.571em;
+    line-height: 2.571em;
+    padding: 0;
+    text-align: center;
+    display: block;
+}
 .widget .tags-list li {
   display: inline-block;
   margin-right: 6px;
