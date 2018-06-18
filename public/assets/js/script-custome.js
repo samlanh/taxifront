@@ -5,7 +5,7 @@
 		}
 	});
   jQuery.ajax({
-	  url: "/locale",
+	  url: APP_URL+"/locale",
 	  type: 'POST',
 	  data: {'locale':index},
 	  dataType: 'JSON',

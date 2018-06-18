@@ -24,3 +24,24 @@ Route::get('/','IndexController@index');
 Route::get('/search','IndexController@result');
 Route::get('/location','LocationController@index');
 Route::post('location', 'LocationController@index');
+
+//for cutomer
+Route::get('/auth/sign_in','CustomerController@index');
+Route::post('/auth/auth-signin', array(
+	'before' => 'csrf',
+    'uses' => 'CustomerController@index'
+ ));
+Route::get('/auth/sign_up','CustomerController@signup');
+Route::post('/auth/auth-signup', array(
+	'before' => 'csrf',
+    'uses' => 'CustomerController@create'
+ ));
+
+
+
+// Route::group(['middlewareGroups' => ['web']], function () {
+
+	
+// 	//For API
+//    Route::get('/api/searchtaxi', ['uses' => 'ApiSearchTaxiController@index']);
+// });

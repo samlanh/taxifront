@@ -68,7 +68,7 @@
 }
 
 html { 
-  font: normal normal 14px/30px 'Roboto Slab', sans-serif;
+  font: normal normal 14px/30px 'Roboto Slab', sans-serif,'Khmer OS Battambang';
   color: #1a1a1a;
   background: #fff;
   overflow-x: hidden;
@@ -3801,4 +3801,16 @@ a.k-link .k-icon {
 .vehicle-list .vechicle-listing-pagination li.number a:hover, .vehicle-list .vechicle-listing-pagination li.number a.active {
     background: #ffc61a;
     border: solid 1px #d6a309;
+}
+
+/*============================
+Other Header Page
+============================*/
+.blank-header-top {
+    background: #000;
+    min-height: 40px;
+}
+.blank-header {
+    background: #7d7763;
+    height: 70px;
 }

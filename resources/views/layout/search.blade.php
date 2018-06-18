@@ -22,7 +22,7 @@
            <!-- Start Car-trans -->
                       <li class="tab-content active">
                         
-                        {!! Form::open(['url' => 'search','id'=>'private_taxi','class'=>'default-form','method'=>'GET']) !!}
+                        {!! Form::open(['url' => '/search','id'=>'private_taxi','class'=>'default-form','method'=>'GET']) !!}
                             <div class="container">
                               <div class="blogform">
                                 <div class="inlineform">

@@ -102,11 +102,8 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 
                   <!-- Start Header-Login -->
                   <div class="header-login">
-                    <button class="header-btn">
-                    <i class="fa fa-key"></i>
-                    {{ trans('language.sign_in') }}
-                    </button>
-                    
+                    <a class="header-btn" href="{{ url('/auth/sign_in') }}"> <i class="fa fa-key"></i>
+                    {{ trans('language.sign_in') }}</a>                                 
                   </div>
                   <!-- End Header-Login -->
 
@@ -349,6 +346,9 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 
                 });
 	</script>
+  <script type="text/javascript">
+  var APP_URL = {!! json_encode(url('/')) !!}
+  </script>
   <script src="{{ asset('assets/js/script-custome.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
   

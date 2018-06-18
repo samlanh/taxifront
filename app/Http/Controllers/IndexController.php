@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\location;
@@ -18,6 +19,46 @@ class IndexController extends Controller
 		
 		return view("main/index");
 	}
+	// public function result(Request $request){
+ 		
+		
+	// 	$fromLocation = $request->input('from_location', '');
+	// 	$toLocation = $request->input('to_location', '');
+	// 	$url="http://localhost/apitaxi/public/api/searchtaxi";
+	// 	// $response = Curl::to($url)
+ //  //       ->withData(array( 'fromLocation' => $fromLocation,'toLocation' => $toLocation ))
+ //  //       ->asJson(true)
+ //  //       ->withContentType('application/json')
+ //  //       ->get();
+
+	// 	$content = [
+ //            "en" => 'New Booking Request'
+ //        ];
+
+
+ //        $fields = [
+ //            'fromLocation' => $fromLocation,
+ //                'toLocation' => $toLocation,
+ //        ];
+
+ //        $fields = json_encode($fields);
+        
+ //        $ch = curl_init();
+ //        curl_setopt($ch, CURLOPT_URL, $url);
+ //        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8'));
+ //        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+ //        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+ //        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+ //        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+ //        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+ //        $response = curl_exec($ch);
+ //        dd($response);
+ //        curl_close($ch);
+
+ //       dd($response);
+		
+	// }
 	public function result(Request $request){
 		
 		$query="
