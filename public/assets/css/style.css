@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------
 
     TABLE OF CONTENT
-
+0. BASIC MARGIN PADDING
 1. GENERAL
 2. TYPOGRAPHY
 3. FORMS
@@ -36,10 +36,8 @@
 19. BOOKING
 20. ABOUT
 21. ABOUT > TEAM
-22. ESSENTIALS
-23. FLEETS
-24. DRIVERS
-25. DRIVERS > MODAL
+23. VEHICLE
+
 26. LOCATIONS
 27. CUSTOMERS
 28. NEWS
@@ -53,7 +51,290 @@
 
 ----------------------------------------------------------------------------- */
 
-
+/*************************
+    05. Basic margin padding
+*************************/
+.m-0 {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+.p-0 {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+/*************************
+    Margin top
+*************************/
+.mt-0 { margin-top: 0 }
+.mt-10 { margin-top: 10px }
+.mt-15 { margin-top: 15px }
+.mt-20 { margin-top: 20px }
+.mt-25 { margin-top: 25px }
+.mt-30 { margin-top: 30px }
+.mt-35 { margin-top: 35px }
+.mt-40 { margin-top: 40px }
+.mt-45 { margin-top: 45px }
+.mt-50 { margin-top: 50px }
+.mt-55 { margin-top: 55px }
+.mt-60 { margin-top: 60px }
+.mt-65 { margin-top: 65px }
+.mt-70 { margin-top: 70px }
+.mt-75 { margin-top: 75px }
+.mt-80 { margin-top: 80px }
+.mt-85 { margin-top: 85px }
+.mt-90 { margin-top: 90px }
+.mt-95 { margin-top: 95px }
+.mt-100 { margin-top: 100px }
+.mt-105 { margin-top: 105px }
+.mt-110 { margin-top: 110px }
+.mt-115 { margin-top: 115px }
+.mt-120 { margin-top: 120px }
+.mt-125 { margin-top: 125px }
+.mt-130 { margin-top: 130px }
+.mt-135 { margin-top: 135px }
+.mt-140 { margin-top: 140px }
+.mt-145 { margin-top: 145px }
+.mt-150 { margin-top: 150px }
+/*************************
+    Margin right
+*************************/
+.mr-0 { margin-right: 0px }
+.mr-10 { margin-right: 10px }
+.mr-15 { margin-right: 15px }
+.mr-20 { margin-right: 20px }
+.mr-30 { margin-right: 30px }
+.mr-40 { margin-right: 40px }
+.mr-50 { margin-right: 50px }
+.mr-60 { margin-right: 60px }
+.mr-70 { margin-right: 70px }
+.mr-80 { margin-right: 80px }
+.mr-90 { margin-right: 90px }
+.mr-100 { margin-right: 100px }
+.mr-110 { margin-right: 110px }
+.mr-120 { margin-right: 120px }
+.mr-130 { margin-right: 130px }
+.mr-140 { margin-right: 140px }
+.mr-150 { margin-right: 150px }
+/*************************
+    Margin bottom
+*************************/
+.mb-0 { margin-bottom: 0 }
+.mb-10 { margin-bottom: 10px }
+.mb-15 { margin-bottom: 15px }
+.mb-20 { margin-bottom: 20px }
+.mb-25 { margin-bottom: 25px }
+.mb-30 { margin-bottom: 30px }
+.mb-35 { margin-bottom: 35px }
+.mb-40 { margin-bottom: 40px }
+.mb-45 { margin-bottom: 45px }
+.mb-50 { margin-bottom: 50px }
+.mb-55 { margin-bottom: 55px }
+.mb-60 { margin-bottom: 60px }
+.mb-65 { margin-bottom: 65px }
+.mb-70 { margin-bottom: 70px }
+.mb-75 { margin-bottom: 75px }
+.mb-80 { margin-bottom: 80px }
+.mb-85 { margin-bottom: 85px }
+.mb-90 { margin-bottom: 90px }
+.mb-95 { margin-bottom: 95px }
+.mb-100 { margin-bottom: 100px }
+.mb-105 { margin-bottom: 105px }
+.mb-110 { margin-bottom: 110px }
+.mb-115 { margin-bottom: 115px }
+.mb-120 { margin-bottom: 120px }
+.mb-125 { margin-bottom: 125px }
+.mb-130 { margin-bottom: 130px }
+.mb-135 { margin-bottom: 135px }
+.mb-140 { margin-bottom: 140px }
+.mb-145 { margin-bottom: 145px }
+.mb-150 { margin-bottom: 150px }
+/*************************
+    Margin left
+*************************/
+.ml-0 { margin-left: 0 }
+.ml-10 { margin-left: 10px }
+.ml-15 { margin-left: 15px }
+.ml-20 { margin-left: 20px }
+.ml-30 { margin-left: 30px }
+.ml-40 { margin-left: 40px }
+.ml-50 { margin-left: 50px }
+.ml-60 { margin-left: 60px }
+.ml-70 { margin-left: 70px }
+.ml-80 { margin-left: 80px }
+.ml-90 { margin-left: 90px }
+.ml-100 { margin-left: 100px }
+.ml-110 { margin-left: 110px }
+.ml-120 { margin-left: 120px }
+.ml-130 { margin-left: 130px }
+.ml-140 { margin-left: 140px }
+.ml-150 { margin-left: 150px }
+/*************************
+    Padding top
+*************************/
+.pt-0 { padding-top: 0 }
+.pt-10 { padding-top: 10px }
+.pt-15 { padding-top: 15px }
+.pt-20 { padding-top: 20px }
+.pt-25 { padding-top: 25px }
+.pt-30 { padding-top: 30px }
+.pt-35 { padding-top: 35px }
+.pt-40 { padding-top: 40px }
+.pt-45 { padding-top: 45px }
+.pt-50 { padding-top: 50px }
+.pt-55 { padding-top: 55px }
+.pt-60 { padding-top: 60px }
+.pt-65 { padding-top: 65px }
+.pt-70 { padding-top: 70px }
+.pt-75 { padding-top: 75px }
+.pt-80 { padding-top: 80px }
+.pt-85 { padding-top: 85px }
+.pt-90 { padding-top: 90px }
+.pt-95 { padding-top: 95px }
+.pt-100 { padding-top: 100px }
+.pt-105 { padding-top: 105px }
+.pt-110 { padding-top: 110px }
+.pt-115 { padding-top: 115px }
+.pt-120 { padding-top: 120px }
+.pt-125 { padding-top: 125px }
+.pt-130 { padding-top: 130px }
+.pt-135 { padding-top: 135px }
+.pt-140 { padding-top: 140px }
+.pt-145 { padding-top: 145px }
+.pt-150 { padding-top: 150px }
+.pt-160 { padding-top: 160px }
+.pt-165 { padding-top: 165px }
+.pt-170 { padding-top: 170px }
+.pt-175 { padding-top: 175px }
+.pt-180 { padding-top: 180px }
+.pt-185 { padding-top: 185px }
+.pt-190 { padding-top: 190px }
+/*************************
+    Padding right
+*************************/
+.pr-0 { padding-right: 0 }
+.pr-10 { padding-right: 10px }
+.pr-15 { padding-right: 15px }
+.pr-20 { padding-right: 20px }
+.pr-30 { padding-right: 30px }
+.pr-40 { padding-right: 40px }
+.pr-50 { padding-right: 50px }
+.pr-60 { padding-right: 60px }
+.pr-70 { padding-right: 70px }
+.pr-80 { padding-right: 80px }
+.pr-90 { padding-right: 90px }
+.pr-100 { padding-right: 100px }
+.pr-110 { padding-right: 110px }
+.pr-120 { padding-right: 120px }
+.pr-130 { padding-right: 130px }
+.pr-140 { padding-right: 140px }
+/*************************
+    Padding bottom
+*************************/
+.pb-0 { padding-bottom: 0 }
+.pb-10 { padding-bottom: 10px }
+.pb-15 { padding-bottom: 15px }
+.pb-20 { padding-bottom: 20px }
+.pb-25 { padding-bottom: 25px }
+.pb-30 { padding-bottom: 30px }
+.pb-35 { padding-bottom: 35px }
+.pb-40 { padding-bottom: 40px }
+.pb-45 { padding-bottom: 45px }
+.pb-50 { padding-bottom: 50px }
+.pb-55 { padding-bottom: 55px }
+.pb-60 { padding-bottom: 60px }
+.pb-65 { padding-bottom: 65px }
+.pb-70 { padding-bottom: 70px }
+.pb-75 { padding-bottom: 75px }
+.pb-80 { padding-bottom: 80px }
+.pb-85 { padding-bottom: 85px }
+.pb-90 { padding-bottom: 90px }
+.pb-95 { padding-bottom: 95px }
+.pb-100 { padding-bottom: 100px }
+.pb-105 { padding-bottom: 105px }
+.pb-110 { padding-bottom: 110px }
+.pb-115 { padding-bottom: 115px }
+.pb-120 { padding-bottom: 120px }
+.pb-125 { padding-bottom: 125px }
+.pb-130 { padding-bottom: 130px }
+.pb-135 { padding-bottom: 135px }
+.pb-140 { padding-bottom: 140px }
+.pb-145 { padding-bottom: 145px }
+.pb-150 { padding-bottom: 150px }
+.pb-155 { padding-bottom: 155px }
+.pb-160 { padding-bottom: 160px }
+.pb-165 { padding-bottom: 165px }
+.pb-170 { padding-bottom: 170px }
+.pb-175 { padding-bottom: 175px }
+.pb-180 { padding-bottom: 180px }
+.pb-185 { padding-bottom: 185px }
+.pb-190 { padding-bottom: 190px }
+/*************************
+    Padding left
+*************************/
+.pl-0 { padding-left: 0 }
+.pl-10 { padding-left: 10px }
+.pl-15 { padding-left: 15px }
+.pl-20 { padding-left: 20px }
+.pl-30 { padding-left: 30px }
+.pl-40 { padding-left: 40px }
+.pl-50 { padding-left: 50px }
+.pl-60 { padding-left: 60px }
+.pl-70 { padding-left: 70px }
+.pl-80 { padding-left: 80px }
+.pl-90 { padding-left: 90px }
+.pl-100 { padding-left: 100px }
+.pl-110 { padding-left: 110px }
+.pl-120 { padding-left: 120px }
+.pl-130 { padding-left: 130px }
+.pl-140 { padding-left: 140px }
+.pl-150 { padding-left: 150px }
+/***************************
+    06. Page section padding 
+****************************/
+.ptb-0 { padding: 0 }
+.ptb-10 { padding: 10px 0 }
+.ptb-20 { padding: 20px 0 }
+.ptb-30 { padding: 30px 0 }
+.ptb-40 { padding: 40px 0 }
+.ptb-50 { padding: 50px 0 }
+.ptb-60 { padding: 60px 0 }
+.ptb-70 { padding: 70px 0 }
+.ptb-80 { padding: 80px 0 }
+.ptb-90 { padding: 90px 0 }
+.ptb-100 { padding: 100px 0 }
+.ptb-110 { padding: 110px 0 }
+.ptb-120 { padding: 120px 0 }
+.ptb-130 { padding: 130px 0 }
+.ptb-140 { padding: 140px 0 }
+.ptb-150 { padding: 150px 0 }
+.ptb-160 { padding: 160px 0 }
+.ptb-170 { padding: 170px 0 }
+.ptb-180 { padding: 180px 0 }
+.ptb-190 { padding: 190px 0 }
+/***************************
+    07. Page section margin 
+****************************/
+.mtb-0 { margin: 0 }
+.mtb-10 { margin: 10px 0 }
+.mtb-15 { margin: 15px 0 }
+.mtb-20 { margin: 20px 0 }
+.mtb-30 { margin: 30px 0 }
+.mtb-40 { margin: 40px 0 }
+.mtb-50 { margin: 50px 0 }
+.mtb-60 { margin: 60px 0 }
+.mtb-70 { margin: 70px 0 }
+.mtb-80 { margin: 80px 0 }
+.mtb-90 { margin: 90px 0 }
+.mtb-100 { margin: 100px 0 }
+.mtb-110 { margin: 110px 0 }
+.mtb-120 { margin: 120px 0 }
+.mtb-130 { margin: 130px 0 }
+.mtb-140 { margin: 140px 0 }
+.mtb-150 { margin: 150px 0; }
 /* -----------------------------------------------------------------------------
 
     GENERAL
@@ -1768,236 +2049,16 @@ button:hover {
 
 .feature .btn { margin-top: 10px; }
 
-/* -------------------------------------------------------------------------
-    ABOUT > TEAM
-------------------------------------------------------------------------- */
-.member h5 { 
-  margin-top: 28px;
-  margin-bottom: 0;
-  line-height: 18px;
-}
 
-.member span { 
-  margin: 0;
-  font: italic normal 18px/28px 'crimson text',sans-serif;
-  color: rgba(26, 26, 26, 0.5);
-}
-
-.member p { margin-top: 10px;}
-
-.member-inner { position: relative; }
-
-.member-inner img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.member .member-social {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(30, 46, 66, 0.8);
-}
-
-.member .member-social li {
-  padding: 13px 0;
-  margin: 0 7px;
-  display: inline-block;
-}
-
-.member .member-social li a > i { 
-  font-size: 18px;
-  color: #fff;
-  -webkit-transition: all .3s ease-in-out;
-     -moz-transition: all .3s ease-in-out;
-      -ms-transition: all .3s ease-in-out;
-       -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-}
-
-.member .member-social li a:hover > i { 
-  color: #ccc; 
-  -webkit-transition: all .3s ease-in-out;
-     -moz-transition: all .3s ease-in-out;
-      -ms-transition: all .3s ease-in-out;
-       -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-}
 
 /* -----------------------------------------------------------------------------
 
-    ESSENTIALS
-
------------------------------------------------------------------------------ */ 
-#essentials { padding: 100px 0 130px 0;} 
-
-#essentials .preamble { margin-bottom: 10px; }
-
-#essentials .tabs-container { clear: both; }
-
-#essentials .tabs-container .tab-title-list:after { 
-  display: table;  
-  clear: both;  
-  content: "";  
-  line-height: 0;  
-}
-
-#essentials .tab-title.active,
-#essentials .tab-title:hover { background: #1e2e42; }
-
-#essentials .tab-title.active a,
-#essentials .tab-title a:hover { color: #fff; }
-
-#essentials .tab-title { 
-  margin-right: 2px;
-  background: #f5f5f5; 
-}
-
-#essentials .tab-title a { 
-  padding-left: 24px;
-  padding-right: 24px;
-  color: #1e2e42; 
-}
-
-#essentials .tab-content-list {
-  position: relative;
-  padding: 30px;
-  border-top: 2px solid #1e2e42;
-  background: #f5f5f5;
-}
-
-#essentials li cite {
-  position: absolute;
-  padding-left: 10px;
-  left: 20px;
-  bottom: 20px;
-  font: normal bold 14px/12px 'roboto slab', sans-serif;
-  color: #fff;
-  text-transform: uppercase;
-  border-left: 2px solid #1e2e42;
-  z-index: 999;
-  -webkit-transition: all .3s ease-in-out;
-     -moz-transition: all .3s ease-in-out;
-      -ms-transition: all .3s ease-in-out;
-       -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-}
-
-#essentials .overlay-shadow { margin: 10px; }
-
-#essentials .overlay-content i { color: #fff;}
-
-/* -------------------------------------------------------------------------
-    ESSENTIALS OUR FLEET SECTION
-------------------------------------------------------------------------- */
-#essentials .fleet-filters li {
-  margin: 0 10px 10px 0;
-  display: inline-block;
-  float: left;
-}
-
-#essentials .fleet-filters li a { padding: 3px 14px; }
-
-#essentials .fleet-filters li a.active { 
-  color: #fff;
-  background-color: #1E2E42;
-}
-
-#essentials .fleet-gallery { 
-  position: relative;
-  overflow: hidden;
-  margin-left: -2px;
-}
-
-#essentials .fleet-gallery li {
-  position: relative;
-  margin-left: 2px;
-  margin-bottom: 2px;
-  width: 268px;
-  float: left;
-}
-
-#essentials .fleet-gallery .overlay-content a {
-  padding-left: 16px;
-  padding-right: 20px;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  border-right: 2px solid rgba(255,255,255,.1);
-}
-
-#essentials .fleet-gallery .overlay-content a:last-child { border-right: none; }
-
-#essentials .fleet-gallery .overlay-content { margin-top: -20px;}
-
-#essentials .fleet-gallery li:hover cite {
-  border-color: #fff; 
-  -webkit-transition: all .3s ease-in-out;
-     -moz-transition: all .3s ease-in-out;
-      -ms-transition: all .3s ease-in-out;
-       -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-}
-
-/* -------------------------------------------------------------------------
-    ESSENTIALS OUR DRIVERS SECTION
-------------------------------------------------------------------------- */
-#essentials .drivers-gallery { 
-  position: relative;
-  overflow: hidden;
-  margin-left: -2px;
-}
-
-#essentials .drivers-gallery .driver-profile {
-  position: relative;
-  margin-left: 2px;
-  margin-bottom: 2px;
-  width: 268px;
-  float: left;
-}
-
-#essentials .drivers-gallery .overlay img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-#essentials .drivers-gallery .overlay-content { top:0; }
-
-#essentials .driver-properties {
-  padding-left: 10px;
-  margin: 10px 10px 0 10px;
-  border-left: 2px solid #1e2e42;
-}
-
-#essentials .driver-properties li {
-  margin: 0;
-  display: block;
-  text-align: left;
-  font: normal bold 14px/16px 'roboto slab', sans-serif;
-  color: #fff;
-}
-
-#essentials .drivers-gallery li:hover cite,
-#essentials .drivers-gallery li:hover .driver-properties { 
-  border-color: #fff; 
-  -webkit-transition: all .3s ease-in-out;
-     -moz-transition: all .3s ease-in-out;
-      -ms-transition: all .3s ease-in-out;
-       -o-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
-}
-
-/* -----------------------------------------------------------------------------
-
-    FLEETS
+    VIHECLE
 
 ----------------------------------------------------------------------------- */ 
 
 /* -------------------------------------------------------------------------
-   FLEET FILTERS 
+   Vihecle FILTERS 
 ------------------------------------------------------------------------- */
 .vehicle-list {padding: 50px 0;/* margin-top: 30px; */background: #f6f7f8;padding-top: 80px;}
 
@@ -2261,133 +2322,6 @@ button:hover {
 
 .vehicle-list .fleet-details-sidebar .fleet-vechicle-properties li strong { float: right; }
 
-/* -----------------------------------------------------------------------------
-
-    DRIVERS
-
------------------------------------------------------------------------------ */ 
-.drivers { padding: 100px 0;}
-
-.drivers .preamble { margin-bottom: 100px;}
-
-.drivers .driver-profile { margin-top: 30px; }
-
-.drivers .driver-profile:first-child { margin-top: 0; }
-
-.driver-profile .thumb {
-  width: 170px;
-  height: 194px;
-  overflow: hidden;
-  float: left;
-}
-
-.drivers .driver-profile-content { 
-  padding: 13px 30px 0 195px;
-  background: #f5f5f5;
-}
-
-.drivers .driver-profile-content:after {
-  display: table; 
-  clear: both; 
-  content: ""; 
-  line-height: 0; 
-}
-
-.drivers .driver-profile-header {
-  position: relative;
-  padding: 11px 0 7px 0;
-  margin-bottom: 22px;
-  border-bottom: 1px solid #dfe1e3;
-}
-
-.drivers .driver-profile-header h5 {
-  padding-right: 70px;
-  display: inline-block;
-  margin: 0; 
-}
-
-.drivers .driver-profile-header span {
-  position: absolute;
-  top: 9px;
-  right: 0;
-  color: rgba(26, 26, 26, 0.5);
-  line-height: 27px;
-}
-
-.drivers .driver-profile-properties { 
-  padding-left: 0;
-  margin-bottom: 20px;
-}
-
-.drivers .driver-profile-properties li { font-size: 16px;}
-
-.drivers .driver-profile-properties li strong { float: right;}
-
-.drivers .driver-profile .overlay-content { margin-top: -25px;}
-
-/* -------------------------------------------------------------------------
-    MODAL
-------------------------------------------------------------------------- */
-.modal-dialog { 
-  padding: 50px;
-  margin: 90px auto;
-  width: 770px; 
-  background: #fff;
-}
-
-.modal-dialog .close {
-  position: absolute;
-  right: -35px;
-  top: -35px;
-}
-
-.modal-dialog .close i { 
-  color: #B9B9B9;
-  font-size: 18px;
-}
-
-.modal-body .img-caption { background: #f5f5f5; }
-
-.modal-body .img-caption img {
-  width: 240px;
-  height: 280px;
-}
-
-.modal-body .img-caption-inner { 
-  padding: 10px 0 15px 0;
-  clear: both; 
-}
-
-.modal-body .img-caption-inner h5 { 
-  margin: 0;
-  line-height: 35px;  
-}
-
-.modal-body .img-caption-inner span { color: rgba(26, 26, 26, 0.5);}
-
-.modal-body .driver-profile-content {
-  padding: 0 0 0 290px;
-  background: #fff;
-}
-
-.modal-body .driver-profile-header { 
-  margin: 0;
-  padding: 0;
-  line-height: 20px;
-}
-
-.modal-body .driver-profile-header h5 { 
-  margin: 0 0 17px 0;
-  line-height: 20px;
-}
-
-.modal-body .driver-profile-bio {
-  padding: 20px 0 27px 0;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.modal-body .driver-profile-properties { margin-bottom: 0;}
 
 /* -----------------------------------------------------------------------------
 
@@ -3814,3 +3748,118 @@ Other Header Page
     background: #7d7763;
     height: 70px;
 }
+
+
+/*============================
+LoginPage
+============================*/
+section.auth {
+    background: url(../img/bg-login.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.blog-righ-login {
+    padding: 20px 10px;
+    background: #ffffff;
+    border: solid 1px #afafafcc;
+    box-shadow: 3px 5px 13px #585858cc;
+}
+.card-box ul.tab-menu {
+    border-bottom: solid 1px #ccc;
+}
+ul.tab-menu li:first-child {
+    border-right: solid 1px #ccc;
+    margin-right: -5px;
+}
+ul.tab-menu li {
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+ul.tab-menu li.nav-item a {
+    color: #000;
+    text-shadow: 1px 1px #6b6969;
+}
+ul.tab-menu li.nav-item a:hover, ul.tab-menu li.nav-item.active a {
+    color: #d8a909;
+}
+.tab-content-vertical .tab-content {
+    min-height: 275px;
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    word-wrap: break-word;
+}
+.input-group-prepend {
+    margin-right: -1px;
+    display: flex;
+}
+.input-group-prepend span i {
+    position: relative;
+    padding: 0;
+    color: #000;
+    font-size: 14px;
+}
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #4E5154;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #F9FAFD;
+    border: 1px solid #BABFC7;
+}
+input[type=password]::placeholder {
+    font-weight: initial;
+}
+.input-group > .form-control, .input-group > .custom-select, 
+.input-group > .custom-file,
+.input-group > input[type=password] {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+    height: 45px;
+    border: solid 1px #ccc;
+}
+input.btn-the-bee:hover {
+    background: #e8bc26;
+    border: solid 1px #c7a222;
+    color: #000;
+}
+input.btn-the-bee {
+    display: block;
+    width: 100%;
+    background: #ffcb1b;
+    border: solid 1px #c79a01;
+    color: #000;
+    -webkit-transition: unset;
+    -moz-transition: unset;
+    -ms-transition: unset;
+    -o-transition: unset;
+    transition: unset;
+}
+a.forget-password:hover {
+    color: #5a5a59;
+}
+
+a.forget-password {
+    color: #000;
+    font-weight: 600;
+  }
+  .title-form h3 {
+    font-size: 18px;
+    color: #000;
+}
+

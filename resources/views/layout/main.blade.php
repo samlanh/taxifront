@@ -102,7 +102,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 
                   <!-- Start Header-Login -->
                   <div class="header-login">
-                    <a class="header-btn" href="{{ url('/auth/sign_in') }}"> <i class="fa fa-key"></i>
+                    <a class="header-btn" href="{{ url('/user/sign_in') }}"> <i class="fa fa-key"></i>
                     {{ trans('language.sign_in') }}</a>                                 
                   </div>
                   <!-- End Header-Login -->
@@ -150,13 +150,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
                   <nav role="navigation">
                     <ul class="nav navbar-nav">
                       <li class="has-submenu">
-                        <a href="index.html" class="active">{{ trans('language.home') }}</a>
-                        <ul class="sub-menu custom-list">
-                          <li><a href="index2.html">Homepage 2</a></li>
-                          <li><a href="index3.html">Homepage 3</a></li>
-                          <li><a href="index4.html">Homepage 4</a></li>
-                          <li><a href="index5.html">Homepage 5</a></li>
-                        </ul>
+                        <a href="index.html" class="active">{{ trans('language.home') }}</a>                     
                       </li>
                       <li class="has-submenu">
                         <a href="#">Our fleet</a>
