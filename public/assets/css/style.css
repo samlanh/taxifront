@@ -3677,6 +3677,7 @@ a.k-link .k-icon {
     text-align: right;
     width: 29%;
 }
+.vehicle-list a.btn.light.book-btn,
 .vehicle-list button.btn.light.book-btn {
     border-style: solid;
     border-color: transparent;
@@ -3861,5 +3862,12 @@ a.forget-password {
   .title-form h3 {
     font-size: 18px;
     color: #000;
+}
+
+/*============================
+Passenger Detail
+============================*/
+.upercase {
+    text-transform: uppercase;
 }
 
