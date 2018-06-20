@@ -25,6 +25,8 @@ Route::get('/search','IndexController@result');
 Route::get('/location','LocationController@index');
 Route::post('location', 'LocationController@index');
 
+Route::get('/taxi/booking', 'BookingController@index');
+
 //for cutomer
 Route::get('/user/sign_in','CustomerController@index');
 Route::post('/user/auth-signin', array(
