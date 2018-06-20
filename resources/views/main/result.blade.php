@@ -1,5 +1,10 @@
 @extends('layout.main')
 @php
+
+$pickupDate = date("Y/m/d");
+if(app('request')->has('pickupdate')){
+  $pickupDate = app('request')->input('pickupdate');
+}
 $urlFromBack = Config::get('constants.myConstant.weburlpart');
 @endphp
 
@@ -67,8 +72,9 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 								<span class="price">USD {{$vehicle->price}}</span>
 							<?php }?>
 						</div>
-						<div class="row-button">	
-							<button class="btn light book-btn">{{ trans('language.book_now') }}</button>
+						<div class="row-button">
+							<a class="btn light book-btn" href="{{ url('/taxi/booking?ondate='.$pickupDate) }}">{{ trans('language.book_now') }}</a>	
+							
 						</div>
 					</div>
 				 

@@ -18,7 +18,18 @@
   'comfirm_password'=> 'Comfirm Password',
   'forget_password'=> 'Forget Password ?',
   'sign_up_now'=> 'Sign Up Now',
-
+  'security_user'=>'User security',
+  'summary'=>'Summary',
+  'passenger_detail'=>'Passenger Detail',
+  'full_name'=>'Full Name',
+  'age'=>'Age',
+  'pickup_pointer'=>'Pick up Pointer',
+  'note'=>'Note',
+  'fly_number'=>'Fly Number',
+  'contact_detail'=>'Contact Detail',
+  'billing_detail'=>'Billing Detail',
+  'billing_address'=>'Billing Detail',
+  'billing_name'=>'Billing Name',
   
    ];
 ?>

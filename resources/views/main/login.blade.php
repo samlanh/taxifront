@@ -4,7 +4,7 @@
 ?>
 
 @section('title')
-	<title>The Bee Go</title>
+	<title>The Bee Go {{trans('language.security_user')}}</title>
 @stop
 
 @section('style')

@@ -150,7 +150,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
                   <nav role="navigation">
                     <ul class="nav navbar-nav">
                       <li class="has-submenu">
-                        <a href="index.html" class="active">{{ trans('language.home') }}</a>                     
+                        <a href="{{ url('/') }}" class="active">{{ trans('language.home') }}</a>
                       </li>
                       <li class="has-submenu">
                         <a href="#">Our fleet</a>
@@ -281,18 +281,6 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
         </div>
       </div>
       <!-- End Footer-Content -->
-
-      <!-- Start Footer-Copyrights -->
-      <div class="footer-copyrights">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <p>Copyright 2018 © The Bee Go. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Footer-Copyrights -->
 
     </footer>
     <!-- End Footer -->
