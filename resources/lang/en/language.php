@@ -30,6 +30,10 @@
   'billing_detail'=>'Billing Detail',
   'billing_address'=>'Billing Detail',
   'billing_name'=>'Billing Name',
+  'phone_number'=>'Phone Number',
+  'email'=>'Email',
+  'transfer_detail'=>'Transfer Detail',
+  'time_picker'=>'Time Picker',
   
    ];
 ?>
