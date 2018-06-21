@@ -335,6 +335,10 @@
 .mtb-130 { margin: 130px 0 }
 .mtb-140 { margin: 140px 0 }
 .mtb-150 { margin: 150px 0; }
+
+
+
+
 /* -----------------------------------------------------------------------------
 
     GENERAL
@@ -3781,7 +3785,7 @@ ul.tab-menu li {
 }
 ul.tab-menu li.nav-item a {
     color: #000;
-    text-shadow: 1px 1px #6b6969;
+    text-shadow: 0px 0px #6b6969;
 }
 ul.tab-menu li.nav-item a:hover, ul.tab-menu li.nav-item.active a {
     color: #d8a909;
@@ -3821,7 +3825,7 @@ ul.tab-menu li.nav-item a:hover, ul.tab-menu li.nav-item.active a {
     background-color: #F9FAFD;
     border: 1px solid #BABFC7;
 }
-input[type=password]::placeholder {
+::placeholder {
     font-weight: initial;
 }
 .input-group > .form-control, .input-group > .custom-select, 
@@ -3867,7 +3871,70 @@ a.forget-password {
 /*============================
 Passenger Detail
 ============================*/
-.upercase {
+.blog-title h3.title-blog {
+    font-size: 20px;
+    margin: 0;
+    color: #e2aa00;
+    font-weight: 700;
+}
+span.panel-step-num {
+    width: 2.5rem;
+    height: 2.5rem;
+    -ms-flex: 0 0 2.5rem;
+    flex: 0 0 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    color: #ffd453;
+    background: #000000;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+    display: inline-block;
+}
+.form-tel .upercase {
     text-transform: uppercase;
 }
+.passenger-detail-content .form-group input {
+    height: 45px;
+    border: solid 1px #ccc;
+    border-radius: 0;
+}
+.border-gradient-to-top {
+    border-width: 5px;
+    border-style: solid;
+    -webkit-border-image: -webkit-gradient(linear, 0 100%, 0 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to top, #eab102, rgba(0, 0, 0, 0)) 1 100%;
+}
+.border-bottom {
+    border-bottom: solid 1px #eee;
+}
 
+.passenger-detail:after {
+    content: '';
+    height: 5px;
+    position: absolute;
+    background: #eab204;
+    bottom: 5px;
+    width: 95.57%;
+    left: 15px;
+}
+label.label_form_detail {
+    margin: 0;
+}
+input.form-control.datetimepick {
+    width: 50%;
+}
+div.input-group.date span.input-group-addon {
+    position: relative;
+    width: 45px;
+}
+div.input-group.date span.input-group-addon span {
+    top: 30%;
+    left: 0;
+}
+div.form-group:after {
+    content: '';
+    clear: both !important;
+}
