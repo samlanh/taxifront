@@ -336,7 +336,9 @@
 .mtb-140 { margin: 140px 0 }
 .mtb-150 { margin: 150px 0; }
 
-
+.bold {
+    font-weight: 700;
+}
 
 
 /* -----------------------------------------------------------------------------
@@ -3937,4 +3939,62 @@ div.input-group.date span.input-group-addon span {
 div.form-group:after {
     content: '';
     clear: both !important;
+}
+.passenger-detail-content .form-group input[type=checkbox] {
+    height: auto;
+}
+a.go-to-term {
+    color: #e3aa00;
+    font-weight: 700;
+}
+span.descrip-condiction strong {
+    font-style: italic;
+}
+
+.right-blog-summary {
+  -ms-flex: auto;
+    flex: auto;
+      display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 950px;
+}
+div#blog-summary {
+  position: -webkit-sticky;
+    position: sticky;
+    background: #f5f8c6;
+    border-radius: .5rem;
+    box-shadow: 3px 4px 1rem #e3e4e4;
+    margin-bottom: 2rem;
+    min-height: 200px;
+    top: 2rem;
+    width: 100%;
+}
+.content-summary ul.booking-summarry {
+    padding: 0;
+}
+.content-summary ul.booking-summarry li span.sum-title {
+    min-width: 20%;
+    display: inline-block;
+}
+.content-summary ul.booking-summarry li span.sum-value {
+    font-weight: 600;
+}
+.blog-cost h3 {
+    color: #444141;
+    font-size: 19px;
+    font-weight: 700;
+}
+.price-individual {
+    border-bottom: solid 3px #e3aa00;
+}
+.price-row span.price-title {
+    min-width: 20%;
+    display: inline-block;
+}
+.price-row span.price-view {
+    font-weight: 700;
+    display: inline-block;
+    text-align: right;
+    width: 71%;
 }

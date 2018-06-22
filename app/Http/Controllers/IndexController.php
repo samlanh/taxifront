@@ -63,6 +63,7 @@ class IndexController extends Controller
 		
 		$query="
 			SELECT
+			pd.`id`,
 			pd.`from_location`,
 			p.`supplyerId`,
 			(SELECT supplier.supplyerName FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierCompany,
