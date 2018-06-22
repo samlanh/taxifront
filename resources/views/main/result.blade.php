@@ -3,13 +3,17 @@
 
 $pickupDate = date("Y/m/d");
 if(app('request')->has('pickupdate')){
-  $pickupDate = app('request')->input('pickupdate');
+	$year = date("Y",strtotime(app('request')->input('pickupdate')));
+	$month = date("m",strtotime(app('request')->input('pickupdate')));
+	$day = date("d",strtotime(app('request')->input('pickupdate')));
+  //$pickupDate = app('request')->input('pickupdate');
+	$pickupDate = $year."%2F".$month."%2F".$day;
 }
 $urlFromBack = Config::get('constants.myConstant.weburlpart');
 @endphp
 
 @section('title')
-	<title>{{trans('language.transfer_from')}}</title>
+	<title>{{trans('language.transfer_from')}} {{app('request')->input('from_location')}} {{trans('language.to')}} {{app('request')->input('to_location')}}	</title>
 @stop
 
 @section('style')
@@ -73,7 +77,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 							<?php }?>
 						</div>
 						<div class="row-button">
-							<a class="btn light book-btn" href="{{ url('/taxi/booking?ondate='.$pickupDate) }}">{{ trans('language.book_now') }}</a>	
+							<a class="btn light book-btn" href="{{ url('/taxi/booking?ondate='.$pickupDate.'&vehicle_id='.$vehicle->id) }}">{{ trans('language.book_now') }}</a>	
 							
 						</div>
 					</div>

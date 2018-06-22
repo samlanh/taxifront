@@ -78,6 +78,8 @@
 						 	 	{{Form::number("age", $value = null, $attributes = ['id'=>'age','class' => 'form-control ','min'=>'1','max'=>'100','placeholder'=>trans('language.age')])}}
 						 	</div>
 						 	<div class="col-md-6 col-xs-12 col-sm-12"> 
+						 		{{ Form::label('number_passenger', trans('language.number_passenger'), array('class' => 'label_form_detail'))}}
+						 	 	{{Form::number("number_passenger", $value = null, $attributes = ['id'=>'number_passenger','class' => 'form-control ','min'=>'1','max'=>'100','placeholder'=>trans('language.number_passenger')])}}
 						 	</div>
 						 	 <div class="clearfix"></div>
 						 </div>
@@ -114,18 +116,76 @@
 						 	</div>
 						 	<div class="clearfix"></div>
 						 </div>
-						 
+						<div class="form-group mb-0">
+							<div class="col-md-12 col-xs-12 col-sm-12 text-left">
+						 	{{ Form::checkbox('agree_term','no',null,$attributes = ["id"=>"agree_term","class"=>"check-box-agree"]) }}
+						 	<span class="descrip-condiction">{{ trans('language.i_have_read_and_agree') }} <a class="go-to-term" href="#">{{ trans('language.term_and_condition') }}</a> {{ trans('language.of') }} <strong>The Bee Go</strong>. </span>
+						 	</div>
+						 	<div class="clearfix"></div>
+						 </div>
+						 <div class="form-group mb-0">
+							<div class="col-md-12 col-xs-12 col-sm-12 text-left">
+						 	{{ Form::checkbox('agree_direction','no',null,$attributes = ["id"=>"agree_direction","class"=>"check-box-agree"]) }}
+						 	<span class="descrip-condiction">{{ trans('language.i_comfirm_direction') }} : <strong>{{ $data->fromLocation }}</strong> {{ trans('language.to') }} <strong>{{ $data->toLocation }} </strong> </span>
+						 	</div>
+						 	<div class="clearfix"></div>
+						 </div>
+						 <div class="form-group mb-20">
+							<div class="col-md-12 col-xs-12 col-sm-12 text-left">
+						 	{{ Form::checkbox('agree_direction','no',null,$attributes = ["id"=>"agree_direction","class"=>"check-box-agree"]) }}
+						 	<span class="descrip-condiction">{{ trans('language.i_comfirm_departure_datetime') }} <strong>{{ date("M d Y",strtotime($bookingdate)) }}</strong> </span>
+						 	</div>
+						 	<div class="clearfix"></div>
+						 </div>
+						 <div class="form-group mb-20">
+						 	<div class="col-md-12 col-xs-12 col-sm-12 text-center">
+						 		{{Form::submit(trans('language.comfirm'), ['id'=>'comfirm','class' => 'btn btn-primary btn-the-bee'])}}
+						 	</div>
+						 	<div class="clearfix"></div>
+						 </div>
 					</div>
         		</div>
         		{!! Form::close() !!}
         	</div>
-        	<div class="col-md-5 col-xs-12 col-sm-12"> 
-        		<div class="summary-booking-blog mtb-10">
-        			<div class="blog-title border-bottom pb-20">
+        	<div class="col-md-5 col-xs-12 col-sm-12 right-blog-summary"> 
+        		<div id="blog-summary" class="summary-booking-blog mtb-10 pr-10 pl-10 pt-10 pb-10">
+        			<div class="blog-title  pb-10">
         				<h3 class="title-blog">{{ trans('language.summary') }}</h3>
+        			</div>
+        			<div class="content-summary">
+        				<ul class="booking-summarry">
+        					<li>
+        						<span class="sum-title">{{ trans('language.vihecle_type') }}</span> : <span class="sum-value">{{ $data->vehicleType }}</span>
+        					</li>
+							<li>
+        						<span class="sum-title">{{ trans('language.direction') }}</span> : <span class="sum-value">{{ $data->fromLocation }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i> {{ $data->toLocation }}</span>
+        					</li>
+        					<li>
+        						<span class="sum-title">{{ trans('language.departure') }}</span> : <span class="sum-value">{{ date("M d Y",strtotime($bookingdate)) }}</span>
+        					</li>
+        				</ul>
+        				<div class="blog-cost">
+        					<h3>{{ trans('language.transfer_cost') }}</h3>
+
+        					<div class="price-individual">
+        						<div class="price-row">
+        							<span class="price-title">{{ trans('language.vehicle') }}</span> <span class="price-view">USD {{ number_format($data->price,2) }}</span>
+        						</div>
+        						<div class="price-row">
+        							<span class="price-title">{{ trans('language.discount') }}</span> <span class="price-view">USD {{ number_format($data->discount,2) }}</span>
+        						</div>
+        					</div>
+        					@php
+        					$total = $data->price - $data->discount;
+        					@endphp
+        					<div class="price-total">
+        						<div class="price-row">
+        							<span class="price-title bold">{{ trans('language.total') }}</span> <span class="price-view">USD {{ number_format($total, 2) }} </span>
+        						</div>
+        					</div>
+        				</div>
 
         			</div>
-
         		</div>
         	</div>
          
