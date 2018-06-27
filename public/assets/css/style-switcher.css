@@ -125,3 +125,8 @@
 #style-switcher .colors > li.active > a:after {
 	content: '\f00c';
 }
+div#pickuplocation-menu .tt-menu,
+div#droplocation-menu .tt-menu {
+    max-height: 150px;
+    overflow-y: auto;
+}

@@ -3925,6 +3925,10 @@ span.panel-step-num {
 label.label_form_detail {
     margin: 0;
 }
+span.required {
+    color: #f00;
+    padding-left: 5px;
+}
 input.form-control.datetimepick {
     width: 50%;
 }

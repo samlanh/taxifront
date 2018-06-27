@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Redirect;
+use App\CustomerModel;
 
 class BookingController extends Controller
 {
@@ -30,7 +33,8 @@ class BookingController extends Controller
       $query="
             SELECT
             pd.`id`,
-            pd.`from_location`,
+            pd.`from_location`, 
+             pd.`to_location`,
             p.`supplyerId`,
             (SELECT supplier.supplyerName FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierCompany,
             (SELECT supplier.logo FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierLogo,
@@ -39,6 +43,7 @@ class BookingController extends Controller
             pd.`cost`,
             pd.`price`,
             pd.`discount`,
+            p.`vehicleType` As vehicleTypeId,
             vt.title AS `vehicleType`,
             vt.`amountCase`,
             vt.`amountSeat`,
@@ -56,8 +61,6 @@ class BookingController extends Controller
         }   
         $query.=" LIMIT 1";
         $result = collect(\DB::select($query))->first();
-
-       
         return view("main/bookingdetail",['data' => $result,'bookingdate'=>$bookingdate]);
     }
 
@@ -77,11 +80,68 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
         //
+       $input = $request->all();
+        $this->validate($request, [
+         'pickup_poiter' => 'required|min:5',
+         'fullname' => 'required',
+         'time_picker' => 'required',
+         'phone_number' => 'required|min:5',
+         'email' => 'required|min:5',
+        ]);
+
+      
+       $customer = CustomerModel::whereEmail($request->email)->first();
+       if (!empty($customer)) {
+           $customerId = $customer->id;
+            $customer = new CustomerModel;
+            $customer->where('id', $customerId)
+            ->update(['customerName' => $request->fullname]);
+       }else{          
+            $customerId = $this->createCustomer($request); 
+       }
+      
+       $id = DB::table('tp_booking')->insertGetId(
+            [
+            'supplyerId' => $request->supplyerId, 
+            'customerId' => $customerId, 
+            'email' => $request->email, 
+            'dateBooking' => date("Y-m-d"), 
+            'fromLocation' => $request->from_location, 
+            'toLocation' => $request->tolocation, 
+            'carTypeId' => $request->vehicleTypeId, 
+            'flyNumber' => $request->fly_number, 
+            'price' => $request->taxi_price,
+            'discount' => $request->dicount, 
+            'totalPrice' => $request->total_booking, 
+            'pickupLocation' => $request->pickup_poiter, 
+            'pickupDate' => date("Y-m-d",strtotime($request->pickupDate)), 
+            'pickupTime' => $request->time_picker, 
+            'note'=> $request->note, 
+            'billingAddress' => $request->billing_address, 
+            'billingName' => $request->billing_name, 
+            ]
+        );
+
+       return view("main/index",['bookingId' => $id]);
     }
 
+    function createCustomer($request){
+        $customer = new CustomerModel;
+        $customer->customerName = $request->fullname;
+        $customer->age =$request->age;
+        $customer->email = $request->email;
+        $customer->tel =$request->phone_number;
+        $customer->status = 1;
+        $customer->createDate = date("Y-m-d H:i:s");
+        $customer->isVerify = 0;
+        $customer->save();      
+        // must add more colum updated_at, created_at 
+         return $customer->id;
+    }
+   
     /**
      * Display the specified resource.
      *

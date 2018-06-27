@@ -27,15 +27,15 @@
                               <div class="blogform">
                                 <div class="inlineform">
                                   <div id="pickuplocation-menu">
-                                    <input class="typeahead" type="text" value="{{ app('request')->input('from_location') }}" name="from_location" placeholder="{{ trans('language.pick_up_location') }}">
-                                  </div>
-                                </div>
+                                      <input class="typeahead" id="from_location" type="text" value="{{ app('request')->input('from_location') }}" name="from_location" placeholder="{{ trans('language.pick_up_location') }}">
+                                    </div>
+                                  </div>                               
                                 <div id="switchlocation" class="switcharrowbutton">
                                   <img src="{{ asset('assets/img/icon/switch-arrow-button.png') }}" />  
                                 </div>
                                 <div class="inlineform">
                                   <div id="droplocation-menu">
-                                    <input class="typeahead" type="text" value="{{ app('request')->input('to_location') }}" name="to_location" placeholder="{{ trans('language.drop_location') }}">
+                                    <input class="typeahead" id="to_location" type="text" value="{{ app('request')->input('to_location') }}" name="to_location" placeholder="{{ trans('language.drop_location') }}">
                                   </div>
                                 </div>
                                 @php 

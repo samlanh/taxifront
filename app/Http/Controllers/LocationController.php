@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Location;
 class LocationController extends Controller
@@ -38,8 +38,8 @@ class LocationController extends Controller
   //       //return json_encode($location);
   //      // return response()->json(['response' => $location]);
 		return view("main/index")->with('data',$location);
-  //        return response()->json($location); 
-  //       return null;
+         return response()->json($location); 
+        return null;
 
     }
 
@@ -108,4 +108,39 @@ class LocationController extends Controller
     {
         //
     }
+
+
+    // public function pickuplocation(Request $request){
+    //     if ($request->has('location')) {
+    //          $location = $this->location->select('locationName as team')
+    //          ->where('locationName', '!=', '$request->location')
+    //          ->get();
+    //     }else{
+    //      $location = $this->location->select('locationName as team')->get();
+    //     }
+    //     return json_encode($location);
+    // }
+
+    public function pickuplocationc(){
+        $result = DB::table('tp_locations')
+        ->orderBy('locationName','asc')->pluck('locationName');
+        return json_encode($result);
+    }
+    public function nonlocation(Request $request){
+         if ($request->has('location')) {
+            $result = DB::table('tp_locations')
+            ->where('locationName','!=',"$request->location")
+            ->orderBy('locationName','asc')
+            ->pluck('locationName');
+         }else{
+
+            $result = DB::table('tp_locations')
+                ->orderBy('locationName','asc')
+            ->pluck('locationName');
+         }
+        
+        return json_encode($result);
+    }
+
+
 }

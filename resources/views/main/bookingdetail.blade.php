@@ -1,7 +1,7 @@
 @extends('layout.main')
-<?php 
-// dd($data);
-?>
+@php
+	$total = $data->price - $data->discount;
+@endphp
 
 @section('title')
 	<title>The Bee Go</title>
@@ -24,22 +24,33 @@
         <div class="row">
 
         	<div class="col-md-7 col-xs-12 col-sm-12"> 
-        		{!! Form::open(['url' => '/booking/request','id'=>'bookingrequest','class'=>'default-form mt-20 mb-10','method'=>'POST']) !!}
+        		{!! Form::open(['url' => 'booking/request','id'=>'bookingrequest','class'=>'default-form mt-20 mb-10','method'=>'POST']) !!}
         		<div class="passenger-detail border-gradient-to-top pb-40 pr-20 pl-20 ">
 					<div class="passenger-detail-content">
+						@if ($errors->any())
+							 @foreach ($errors->all() as $error)
+								<div class="alert alert-warning alert-dismissible  show" role="alert">
+								  {{ $error }}
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">&times;</span>
+								  </button>
+								</div>
+							 @endforeach
+						@endif
+						
 						<div class="blog-title border-bottom pb-10">
 	        				<h3 class="title-blog upercase"><span class="panel-step-num">1</span>{{ trans('language.transfer_detail') }}</h3>
 	        			</div>				
 						 
 						 <div class="form-group mtb-5">
 						 	<div class="col-md-7 col-xs-12 col-sm-12"> 
-							 	{{ Form::label('pickup_pointer', trans('language.pickup_pointer'), array('class' => 'label_form_detail'))}}
-							 	 {{Form::text("pickup_poiter", $value = null, $attributes = ['id'=>'pickup_poiter','class' => 'form-control ','required'=>'required','placeholder'=>trans('language.pickup_pointer')])}}
+							 	{{ Form::label('pickup_pointer', trans('language.pickup_pointer'), array('class' => 'label_form_detail'))}} <span class="required">*</span>
+							 	 {{Form::text("pickup_poiter",null, $attributes = ['id'=>'pickup_poiter','class' => 'form-control ','required'=>'required','placeholder'=>trans('language.pickup_pointer')])}}
 						 	</div>
 						 	<div class="col-md-5 col-xs-12 col-sm-12"> 
-						 		{{ Form::label('time_picker', trans('language.time_picker'), array('class' => 'label_form_detail'))}}
+						 		{{ Form::label('time_picker', trans('language.time_picker'), array('class' => 'label_form_detail'))}} <span class="required">*</span>
 						 		<div class='input-group date' id='datetimepicker3'>
-				                    <input id="time_picker" name="time_picker" type='text' class="form-control datetimepick" onkeydown="return false" />
+				                    <input id="time_picker" value="{{$value = null}}" name="time_picker" type='text' class="form-control datetimepick" required='required' onkeydown="return false" />
 				                    <span class="input-group-addon">
 				                        <span class="glyphicon glyphicon-time"></span>
 				                    </span>
@@ -50,7 +61,7 @@
 						
 						 <div class="form-group mtb-5">
 						 	<div class="col-md-12 col-xs-12 col-sm-12">
-						 		{{ Form::label('note', trans('language.note'), array('class' => 'label_form_detail'))}}
+						 		{{ Form::label('note', trans('language.note'), array('class' => 'label_form_detail'))}} 
 						 	 {{Form::text("note", $value = null, $attributes = ['id'=>'note','class' => 'form-control ','placeholder'=>trans('language.note')])}}
 						 	</div>
 						 	<div class="clearfix"></div>						 	
@@ -68,7 +79,7 @@
 	        			</div>
 	        			<div class="form-group mtb-5">
 	        				<div class="col-md-12 col-xs-12 col-sm-12">
-						 	 {{ Form::label('fullname', trans('language.full_name'), array('class' => 'label_form_detail'))}}
+						 	 {{ Form::label('fullname', trans('language.full_name'), array('class' => 'label_form_detail'))}}<span class="required">*</span>
 						 	 {{Form::text("fullname", $value = null, $attributes = ['id'=>'fullname','class' => 'form-control ','placeholder'=>trans('language.full_name')])}}
 						 	</div>
 						 </div>
@@ -80,24 +91,32 @@
 						 	<div class="col-md-6 col-xs-12 col-sm-12"> 
 						 		{{ Form::label('number_passenger', trans('language.number_passenger'), array('class' => 'label_form_detail'))}}
 						 	 	{{Form::number("number_passenger", $value = null, $attributes = ['id'=>'number_passenger','class' => 'form-control ','min'=>'1','max'=>'100','placeholder'=>trans('language.number_passenger')])}}
+						 	 	{{ Form::hidden('taxi_price', $data->price, array('id' => 'taxi_price') ) }}
+						 	 	{{ Form::hidden('dicount', $data->discount,array('id' => 'discount')) }}
+						 	 	{{ Form::hidden('total_booking', $total,array('id' => 'total_booking')) }}
+						 	 	{{ Form::hidden('from_location', $data->from_location,array('id' => 'from_location')) }}
+						 	 	{{ Form::hidden('tolocation', $data->to_location,array('id' => 'tolocation')) }}
+						 	 	{{ Form::hidden('supplyerId', $data->supplyerId,array('id' => 'supplyerId')) }}
+						 	 	{{ Form::hidden('vehicleTypeId', $data->vehicleTypeId,array('id' => 'vehicleTypeId')) }}
+						 	 	{{ Form::hidden('pickupDate', date("Y-m-d",strtotime($bookingdate)),array('id' => 'vehicleTypeId')) }}
 						 	</div>
 						 	 <div class="clearfix"></div>
 						 </div>
 						
 	        			<div class="form-group mtb-5">
 	        				<div class="col-md-6 col-xs-12 col-sm-12"> 
-	        					{{ Form::label('phone_number', trans('language.phone_number'), array('class' => 'label_form_detail'))}}	        				
+	        					{{ Form::label('phone_number', trans('language.phone_number'), array( 'class' => 'label_form_detail','required'=>'required'))}}<span class="required">*</span>	        				
 		        				<div class="form-tel">
-							 	 	<input id="phone" type="tel">
+							 	 	<input id="phone" name="phone_number" value="{{$value = null}}" required="required" type="tel">
 							 	 </div>
 	        				</div>
 	        				<div class="col-md-6 col-xs-12 col-sm-12"> 
-	        					{{ Form::label('email', trans('language.email'), array('class' => 'label_form_detail'))}}								 
+	        					{{ Form::label('email', trans('language.email'), array('class' => 'label_form_detail'))}}<span class="required">*</span>								 
 							    <div class="input-group">
 			                        <div class="input-group-prepend">
 			                          <span class="input-group-text" id="basic-addon3"><i class="fa fa-envelope"></i></span>
 			                        </div>
-			                         {{Form::email("email", $value = null, $attributes = ['id'=>'email','class' => 'form-control ','placeholder'=>trans('language.enter_email')])}}
+			                         {{Form::email("email", $value = null, $attributes = ['id'=>'email','class' => 'form-control ','required'=>'required','placeholder'=>trans('language.enter_email')])}}
 			                     </div>
 	        				</div>
 	        				<div class="clearfix"></div>
@@ -175,9 +194,7 @@
         							<span class="price-title">{{ trans('language.discount') }}</span> <span class="price-view">USD {{ number_format($data->discount,2) }}</span>
         						</div>
         					</div>
-        					@php
-        					$total = $data->price - $data->discount;
-        					@endphp
+        					
         					<div class="price-total">
         						<div class="price-row">
         							<span class="price-title bold">{{ trans('language.total') }}</span> <span class="price-view">USD {{ number_format($total, 2) }} </span>

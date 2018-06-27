@@ -52,48 +52,140 @@ $(document).ready(function(){
 		
 	}
 	
-	var substringMatcher = function(strs) {
-	  return function findMatches(q, cb) {
-		var matches, substringRegex;
+  	var substringMatcher = function(strs) {
+      return function findMatches(q, cb) {
+      var matches, substringRegex;
 
-		// an array that will be populated with substring matches
-		matches = [];
+      // an array that will be populated with substring matches
+      matches = [];
 
-		// regex used to determine if a string contains the substring `q`
-		substrRegex = new RegExp(q, 'i');
+      // regex used to determine if a string contains the substring `q`
+      substrRegex = new RegExp(q, 'i');
 
-		// iterate through the pool of strings and for any string that
-		// contains the substring `q`, add it to the `matches` array
-		$.each(strs, function(i, str) {
-		  if (substrRegex.test(str)) {
-			matches.push(str);
-		  }
-		});
+      // iterate through the pool of strings and for any string that
+      // contains the substring `q`, add it to the `matches` array
+      $.each(strs, function(i, str) {
+        if (substrRegex.test(str)) {
+        matches.push(str);
+        }
+      });
 
-		cb(matches);
-	  };
-	};
-		$('#pickuplocation-menu .typeahead').typeahead({
-		  hint: true,
-		  highlight: true,
-		  limit: 10,
-		  minLength: 1
-		},
-		{
-		  name: 'from_location',
-		  source: substringMatcher(states)
-		});
+      cb(matches);
+      };
+    };
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var pickupLocation = [];
+        var dropLocation = [];
+          jQuery.ajax({
+              url: APP_URL+"/jquerytypeahead/location.json",
+              type: 'POST',
+              data: {},
+              dataType: 'JSON',
+              success: function (data) {
+                   var pickupLocation = data;
+                   var dropLocation = data;
+                 $('#pickuplocation-menu .typeahead').typeahead({
+                      hint: true,
+                      highlight: true,
+                      limit: 20,
+                      minLength: 0
+                    },
+                    {
+                      name: 'from_location',
+                      source: substringMatcher(pickupLocation)
+                    });
 
-		$('#droplocation-menu .typeahead').typeahead({
-		  hint: true,
-		  highlight: true,
-		  limit: 10,
-		  minLength: 1
-		},
-		{
-		  name: 'to_location',
-		  source: substringMatcher(states)
-		});
+                    $('#droplocation-menu .typeahead').typeahead({
+                      hint: true,
+                      highlight: true,
+                      limit: 20,
+                      minLength: 0
+                    },
+                    {
+                      name: 'to_location',
+                      source: substringMatcher(dropLocation)
+                    });
+              },
+              error: function(e) {
+                console.log(e.responseText);
+              }
+          });
+
+    $('#pickuplocation-menu .typeahead').on('typeahead:selected', function(evt, item) {
+        //$('#droplocation-menu .typeahead').typeahead('open');
+            checkNotDuplicatePick();
+    });
+
+    $('#droplocation-menu .typeahead').on('typeahead:selected', function(evt, item) {
+        //$('#droplocation-menu .typeahead').typeahead('open');
+            checkNotDuplicateDrop();
+    });
+
+    function checkNotDuplicatePick(){
+      var from_location = $('#from_location').val();
+            var to_location = $('#to_location').val();
+            jQuery.ajax({
+              url: APP_URL+"/jquerytypeahead/nonlocation.json",
+              type: 'POST',
+              data: {'location':from_location},
+              dataType: 'JSON',
+              success: function (data) {
+                dropLocation = data;
+                $('#droplocation-menu .typeahead').typeahead('destroy');
+                $('#droplocation-menu .typeahead').typeahead({
+                      hint: true,
+                      highlight: true,
+                      limit: 20,
+                      minLength: 0
+                    },
+                    {
+                      name: 'to_location',
+                      source: substringMatcher(dropLocation)
+                    });
+                 if(to_location!=""){
+                   $('#to_location').val(to_location);
+                 }
+              },
+              error: function(e) {
+                console.log(e.responseText);
+              }
+          });
+    }
+
+    function checkNotDuplicateDrop(){
+      var from_location = $('#from_location').val();
+            var to_location = $('#to_location').val();
+            jQuery.ajax({
+              url: APP_URL+"/jquerytypeahead/nonlocation.json",
+              type: 'POST',
+              data: {'location':to_location},
+              dataType: 'JSON',
+              success: function (data) {
+                pickupLocation = data;
+                $('#pickuplocation-menu .typeahead').typeahead('destroy');
+                $('#pickuplocation-menu .typeahead').typeahead({
+                      hint: true,
+                      highlight: true,
+                      limit: 20,
+                      minLength: 0
+                    },
+                    {
+                      name: 'from_location',
+                      source: substringMatcher(pickupLocation)
+                    });
+                 if(from_location!=""){
+                   $('#from_location').val(from_location);
+                 }
+              },
+              error: function(e) {
+                console.log(e.responseText);
+              }
+          });
+    }
     /* -------------------------------------------------------------------------
     FIXED MENU
   ------------------------------------------------------------------------- 
@@ -117,7 +209,8 @@ $(document).ready(function(){
 		
 		$("input[name=from_location]").val(to_location);
 		$("input[name=to_location]").val(from_location);	
-	 
+  	 checkNotDuplicatePick();
+     checkNotDuplicateDrop();
 	});
 
   /* -------------------------------------------------------------------------

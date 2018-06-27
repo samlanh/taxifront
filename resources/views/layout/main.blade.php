@@ -2,23 +2,7 @@
 @php
 $urlFromBack = Config::get('constants.myConstant.weburlpart');
 @endphp
- <?php 
- 
-  $loca="";
-              if (!empty($Location)){
-                  $loca='';
-                   foreach ($Location as $key => $value){
-                      if (empty($loca)) {
 
-                        $loca = "'".$value->locationName."'";
-                      }else{
-                        $loca = $loca.","."'".$value->locationName."'";
-                      }
-
-                   }
-               }
-            
-          ?>
 <html lang="en-us">
   <head>
 
@@ -302,31 +286,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 	<script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
 	<script>
     var states = [];
-          var states = [<?php echo $loca;?>];
 
-         
-         
-	$(document).ready(function() {
-					console.log(states);
-          
-        //   jQuery.ajax({
-        //       url: "{{ URL::to('/location') }}",
-        //       type: 'POST',
-        //       data: {},
-        //       dataType: 'JSON',
-        //       success: function (data) {
-        //            var states = $.map(data, function(value, index) {
-        //               return [data[index].locationName];
-        //           });
-        //           //alert(states);
-        //          console.log(states);
-        //       },
-        //       error: function(e) {
-        //         console.log(e.responseText);
-        //       }
-        //   });
-
-                });
 	</script>
   <script type="text/javascript">
   var APP_URL = {!! json_encode(url('/')) !!}
