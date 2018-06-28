@@ -141,6 +141,21 @@ class LocationController extends Controller
         
         return json_encode($result);
     }
+    public function comparelocation(Request $request){
 
+        $result =  DB::table('tp_locations')
+                ->where('locationName',"$request->from_location")
+                ->first();
+        if (empty($result)) {
+            return json_encode(array('data' => false,'message'=>trans('language.origi_destination_notfount'))); 
+        }
+        $result =  DB::table('tp_locations')
+                ->where('locationName',"$request->to_location")
+                ->first();
+        if (empty($result)) {
+            return json_encode(array('data' => false,'message'=>trans('language.origi_destination_notfount') )); 
+        }
+        return json_encode(array('data' => true,'message'=>'' )); 
+    }
 
 }

@@ -61,6 +61,16 @@ class IndexController extends Controller
 	// }
 	public function result(Request $request){
 		
+		$result = $this->getSearchVehicleDefaulLocation($request);
+		if (empty($result)) {
+			$result = $this->getSearchVehicleDefaulLocationReverse($request);
+		}
+		return view('main.result', ['data' => $result]);
+	
+		// return view("main/result");
+	}
+
+	function getSearchVehicleDefaulLocation($search){
 		$query="
 			SELECT
 			pd.`id`,
@@ -85,16 +95,47 @@ class IndexController extends Controller
 			 WHERE p.`id`= pd.`price_id`
 			 AND vt.`id` = p.`vehicleType`
 		";	
-		if ($request->has('from_location')) {
-			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`from_location` LIMIT 1 ) ='$request->from_location' ";  
+		if ($search->has('from_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`from_location` LIMIT 1 ) ='$search->from_location' ";  
 		}
-		if ($request->has('to_location')) {
-			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`to_location` LIMIT 1 ) ='$request->to_location' ";  
+		if ($search->has('to_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`to_location` LIMIT 1 ) ='$search->to_location' ";  
 		}		
-		$result = DB::select($query);		
-
-		return view('main.result', ['data' => $result]);
-	
-		// return view("main/result");
+		return $result = DB::select($query);
+	}
+	function getSearchVehicleDefaulLocationReverse($search){
+		$query="
+			SELECT
+			pd.`id`,
+			pd.`from_location`,
+			p.`supplyerId`,
+			(SELECT supplier.supplyerName FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierCompany,
+			(SELECT supplier.logo FROM `tp_supplier` AS supplier WHERE supplier.id = p.`supplyerId` LIMIT 1) AS supplierLogo,
+			(SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`from_location` LIMIT 1 ) AS fromLocation,
+			(SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`to_location` LIMIT 1 ) AS toLocation,
+			pd.`cost`,
+			pd.`price`,
+			pd.`discount`,
+			vt.title AS `vehicleType`,
+			vt.`amountCase`,
+			vt.`amountSeat`,
+			vt.`amountSmallCase`,
+			vt.`description`,
+			vt.`images` as vhicleImages,
+			'is_reverse'
+			 FROM `tp_price_detail` AS pd,
+			 `tp_price` AS p,
+			 `tp_vehicletype` AS vt
+			 WHERE p.`id`= pd.`price_id`
+			 AND vt.`id` = p.`vehicleType`
+		";	
+		if ($search->has('from_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`to_location` LIMIT 1 ) ='$search->from_location' ";  
+		}
+		if ($search->has('to_location')) {
+			$query.=" AND (SELECT location.locationName FROM tp_locations AS location WHERE location.id = pd.`from_location` LIMIT 1 ) ='$search->to_location' ";  
+		}
+		
+		return $result = DB::select($query);
 	}
 }

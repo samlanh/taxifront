@@ -22,6 +22,20 @@ Route::post('/locale', array(
 
 Route::get('/','IndexController@index');
 Route::get('/search','IndexController@result');
+Route::post('/jquerytypeahead/location.json', array(
+	'before' => 'csrf',
+    'uses' => 'LocationController@pickuplocationc'
+ ));
+Route::post('/jquerytypeahead/nonlocation.json', array(
+	'before' => 'csrf',
+    'uses' => 'LocationController@nonlocation'
+ ));
+Route::post('/search/compare/availablelocation', array(
+	'before' => 'csrf',
+    'uses' => 'LocationController@comparelocation'
+));
+
+
 Route::get('/location','LocationController@index');
 Route::post('location', 'LocationController@index');
 
@@ -39,14 +53,7 @@ Route::post('/user/auth-signup', array(
     'uses' => 'CustomerController@create'
  ));
 
-Route::post('/jquerytypeahead/location.json', array(
-	'before' => 'csrf',
-    'uses' => 'LocationController@pickuplocationc'
- ));
-Route::post('/jquerytypeahead/nonlocation.json', array(
-	'before' => 'csrf',
-    'uses' => 'LocationController@nonlocation'
- ));
+
 
 
 // Route::group(['middlewareGroups' => ['web']], function () {

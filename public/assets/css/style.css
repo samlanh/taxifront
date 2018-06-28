@@ -4002,3 +4002,15 @@ div#blog-summary {
     text-align: right;
     width: 71%;
 }
+.search-blogmessage span.search-message {
+    color: #f00;
+    font-weight: 600;
+}
+.search-blogmessage span.search-message i {
+    position: initial;
+    color: #f00c;
+}
+.tt-menu {
+    max-height: 250px;
+    overflow-y: auto;
+    }

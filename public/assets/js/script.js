@@ -91,10 +91,10 @@ $(document).ready(function(){
                  $('#pickuplocation-menu .typeahead').typeahead({
                       hint: true,
                       highlight: true,
-                      limit: 20,
                       minLength: 0
                     },
                     {
+                      limit: 20,
                       name: 'from_location',
                       source: substringMatcher(pickupLocation)
                     });
@@ -102,10 +102,11 @@ $(document).ready(function(){
                     $('#droplocation-menu .typeahead').typeahead({
                       hint: true,
                       highlight: true,
-                      limit: 20,
+                      
                       minLength: 0
                     },
                     {
+                      limit: 20,
                       name: 'to_location',
                       source: substringMatcher(dropLocation)
                     });
@@ -115,9 +116,9 @@ $(document).ready(function(){
               }
           });
 
-    $('#pickuplocation-menu .typeahead').on('typeahead:selected', function(evt, item) {
-        //$('#droplocation-menu .typeahead').typeahead('open');
+    $('#pickuplocation-menu .typeahead').on('typeahead:selected', function(evt, item) {        
             checkNotDuplicatePick();
+            $('#droplocation-menu .typeahead').typeahead('open');
     });
 
     $('#droplocation-menu .typeahead').on('typeahead:selected', function(evt, item) {
@@ -139,10 +140,11 @@ $(document).ready(function(){
                 $('#droplocation-menu .typeahead').typeahead({
                       hint: true,
                       highlight: true,
-                      limit: 20,
+                      
                       minLength: 0
                     },
                     {
+                      limit: 20,
                       name: 'to_location',
                       source: substringMatcher(dropLocation)
                     });
@@ -157,7 +159,7 @@ $(document).ready(function(){
     }
 
     function checkNotDuplicateDrop(){
-      var from_location = $('#from_location').val();
+            var from_location = $('#from_location').val();
             var to_location = $('#to_location').val();
             jQuery.ajax({
               url: APP_URL+"/jquerytypeahead/nonlocation.json",
@@ -170,10 +172,11 @@ $(document).ready(function(){
                 $('#pickuplocation-menu .typeahead').typeahead({
                       hint: true,
                       highlight: true,
-                      limit: 20,
+                      
                       minLength: 0
                     },
                     {
+                      limit: 20,
                       name: 'from_location',
                       source: substringMatcher(pickupLocation)
                     });
@@ -186,6 +189,32 @@ $(document).ready(function(){
               }
           });
     }
+     function compareLocation(){
+        var from_location = $('#from_location').val();
+            var to_location = $('#to_location').val();
+            jQuery.ajax({
+              url: APP_URL+"/search/compare/availablelocation",
+              type: 'POST',
+              data: {'to_location':to_location,'from_location':from_location},
+              dataType: 'JSON',
+              success: function (data) {
+                
+                if(data.data == false){
+                  $('.search-blogmessage').html('<span class="search-message"><i class="fa fa-warning" aria-hidden"true"=""></i> '+data.message+'</span>');
+                }else{
+                  $('.search-blogmessage').html('');   
+                    $("#private_taxi").submit();     
+                }
+                var validationform = 1;  
+              },
+              error: function(e) {
+                console.log(e.responseText);
+              }
+          });
+     }
+$( "#btnfindtaxi" ).click(function() {
+  compareLocation();
+});
     /* -------------------------------------------------------------------------
     FIXED MENU
   ------------------------------------------------------------------------- 

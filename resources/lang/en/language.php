@@ -48,6 +48,7 @@
   'discount'=>'Discount',
   'total'=>'Total',
   'to'=>'to',
+  'origi_destination_notfount'=>'Origin and Destination Not Found',
   
    ];
 ?>

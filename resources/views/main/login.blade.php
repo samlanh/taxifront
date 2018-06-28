@@ -88,6 +88,11 @@
 					                         {{Form::email("email", $value = null, $attributes = ['id'=>'n_email','class' => 'form-control ','placeholder'=>trans('language.enter_email')])}}
 					                      </div>
 									  </div>
+									  <div class="form-group">
+									  		<div class="input-group form-tel">
+										 	 	<input id="phone" name="phone_number" value="{{$value = null}}" required="required" type="tel">
+										 	 </div>
+									  </div>
 									  <div class="form-group">									  	
 											<div class="input-group">
 												<div class="input-group-prepend">
@@ -125,4 +130,28 @@
 @stop
 
 @section('script')
+<link rel="stylesheet" href="{{ asset('assets/js/int-phone/css/intlTelInput.css') }}">
+<script src="{{ asset('assets/js/int-phone/intlTelInput.js') }}"></script>
+
+ <script>
+  	
+	    $("#phone").intlTelInput({
+	       geoIpLookup: function(callback) {
+	         $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+	           var countryCode = (resp && resp.country) ? resp.country : "";
+	           callback(countryCode);
+	         });
+	       },
+	      initialCountry: "auto",
+	      utilsScript: "{{ asset('assets/js/int-phone/utils.js') }}"
+	    });
+	      $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+                
+
+            });
+   
+  </script>
 @stop

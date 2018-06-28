@@ -24,6 +24,9 @@
                         
                         {!! Form::open(['url' => '/search','id'=>'private_taxi','class'=>'default-form','method'=>'GET']) !!}
                             <div class="container">
+                              <div class="search-blogmessage">
+                                
+                              </div>
                               <div class="blogform">
                                 <div class="inlineform">
                                   <div id="pickuplocation-menu">
@@ -49,7 +52,8 @@
                                   <input id="pickupdate" name="pickupdate" value="{{ $pickupDate }}" type="hidden" style="width: 100%">
                                 </div>
                                 <div class="inlineform">
-                                  <button class="btn light">{{ trans('language.find_vihecle') }}</button>                      
+                                  {{Form::button(trans('language.find_vihecle'), ['id'=>'btnfindtaxi','class' => 'btn light'])}}
+                                                        
                                 </div>
                               </div>
                             </div>
