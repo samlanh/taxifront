@@ -22,6 +22,19 @@
       <div class="container">
         <div class="row">
         	<div class="col-md-7 col-xs-12 col-sm-12"> 
+        		@php
+        		//dd($errors);
+        		@endphp
+        		@if ($errors->any())
+					 @foreach ($errors->all() as $error)
+						<div class="alert alert-warning alert-dismissible  show" role="alert">
+						  {{ $error }}
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+					 @endforeach
+				@endif
         	</div>
         	<div class="col-md-5 col-xs-12 col-sm-12"> 
         		<div class="blog-righ-login mtb-20">
@@ -79,6 +92,7 @@
 					        	<div class="title-form text-center mtb-20">
 					        		<h3>{{trans('language.sign_up_now')}}</h3>
 					        	</div>
+
 					        	{!! Form::open(['url' => '/user/auth-signup','id'=>'signup','class'=>'default-form mt-20 mb-10','method'=>'POST']) !!}
 							          <div class="form-group mtb-20">									 
 									    <div class="input-group">
@@ -91,6 +105,7 @@
 									  <div class="form-group">
 									  		<div class="input-group form-tel">
 										 	 	<input id="phone" name="phone_number" value="{{$value = null}}" required="required" type="tel">
+										 	 	
 										 	 </div>
 									  </div>
 									  <div class="form-group">									  	
@@ -106,7 +121,7 @@
 												<div class="input-group-prepend">
 												  <span class="input-group-text" id="basic-addon3"><i class="fa fa-key"></i></span>
 												</div>
-												{{Form::password('c_password', ['id'=>'c_password','class' => 'form-control','placeholder'=>trans('language.comfirm_password')])}}  
+												{{Form::password('password_confirmation', ['id'=>'confirm_password','class' => 'form-control','placeholder'=>trans('language.comfirm_password')])}}  
 										  </div>
 									  </div>
 									  <div class="form-group text-center">

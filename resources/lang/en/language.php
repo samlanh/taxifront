@@ -49,6 +49,10 @@
   'total'=>'Total',
   'to'=>'to',
   'origi_destination_notfount'=>'Origin and Destination Not Found',
+  'please_fill_your_email'=>'Please fill your E-mail address',
+  'please_fill_your_phone_mumber'=>'Please fill your phone number',
+  'please_fill_your_password'=>'Please fill your password at least 6 charecters',
+  'please_fill_your_c_password'=>'Please fill your comfirm password',
   
    ];
 ?>

@@ -50,7 +50,7 @@ Route::post('/user/auth-signin', array(
  ));
 Route::post('/user/auth-signup', array(
 	'before' => 'csrf',
-    'uses' => 'CustomerController@create'
+    'uses' => 'CustomerController@store'
  ));
 
 

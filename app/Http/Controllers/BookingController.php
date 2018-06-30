@@ -83,7 +83,7 @@ class BookingController extends Controller
      public function store(Request $request)
     {
         //
-       $input = $request->all();
+       // $input = $request->all();
         $this->validate($request, [
          'pickup_poiter' => 'required|min:5',
          'fullname' => 'required',
