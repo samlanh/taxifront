@@ -1,6 +1,6 @@
 @extends('layout.main')
 <?php 
-// dd($data);
+	$urlFromBack = Config::get('constants.myConstant.weburlpart');
 ?>
 
 @section('title')
@@ -111,35 +111,24 @@
     <section class="partners">
       <div class="container">
         <div class="row">
-
+        
           <!-- Start Preamble -->
           <div class="col-lg-12 preamble">
             <h5>Our Partners</h5>
           </div>
           <!-- End Preamble -->
-
+          <?php 
+          		foreach ($data as $key => $value) {
+		  ?>
           <!-- Start Partner -->
-          <div class="col-lg-3 col-md-3 col-sm-3 company">
-            <a href="#"><img src="{{ asset('assets/img/company1.png') }}" alt=""></a>
+          
+          <div class="col-lg-2 col-md-2 col-sm-2" style="margin-bottom: 50px;">
+            <p title="{{$value->supplyerName}}"><a href="<?php if(!empty($value->website))echo 'http://'.$value->website ?>"><img class="partnerimg" src="{{ $urlFromBack.'/all/supplyerlogo/'.$value->logo }}" alt=""></a>
+            </p>
           </div>
+      	  
           <!-- End Partner -->
-
-          <!-- Start Partner -->
-          <div class="col-lg-3 col-md-3 col-sm-3 company">
-            <a href="#"><img src="{{ asset('assets/img/company2.png') }}" alt=""></a>
-          </div>
-          <!-- End Partner -->
-
-          <!-- Start Partner -->
-          <div class="col-lg-3 col-md-3 col-sm-3 company">
-            <a href="#"><img src="{{ asset('assets/img/company3.png') }}" alt=""></a>
-          </div>
-          <!-- End Partner -->
-
-          <!-- Start Partner -->
-          <div class="col-lg-3 col-md-3 col-sm-3 company">
-            <a href="#"><img src="{{ asset('assets/img/company4.png') }}" alt=""></a>
-          </div>
+          <?php }?>
           <!-- End Partner -->
 
         </div>

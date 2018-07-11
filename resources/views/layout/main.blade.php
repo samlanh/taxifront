@@ -3,6 +3,11 @@
 $urlFromBack = Config::get('constants.myConstant.weburlpart');
 @endphp
 
+<?php 
+  //print_r($data);
+  //echo $data->aboutUs;
+?>
+
 <html lang="en-us">
   <head>
 
@@ -60,12 +65,12 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
                   <ul class="custom-list header-contact">
                     <li>
                       <i class="fa fa-phone"></i>
-                      +1 (123) 456-7890
+                      {{$data->contactUs}}
                     </li>
                     <li>
                       <i class="fa fa-envelope"></i>
                         <a href="mailto:example@example.com">
-                        example@example.com
+                        {{$data->email}}
                         </a>
                     </li>
                   </ul>
@@ -78,9 +83,10 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 
                   <!-- Start Social -->
                   <ul class="header-social custom-list">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li><a href="{{'http://'.$data->facebook}}" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                    <li><a href="{{'http://'.$data->twitter}}" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="{{'http://'.$data->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="{{'http://'.$data->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
                   </ul> 
                   <!-- End Social -->
 
@@ -136,15 +142,7 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
                       <li class="has-submenu">
                         <a href="{{ url('/') }}" class="active">{{ trans('language.home') }}</a>
                       </li>
-                      <li class="has-submenu">
-                        <a href="#">Our fleet</a>
-                        <ul class="sub-menu custom-list">
-                          <li><a href="fleet_list.html">Fleet List</a></li>
-                          <li><a href="fleet_grid.html">Fleet Grid</a></li>
-                          <li><a href="fleet_unit_details.html">Fleet Unit Details</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="drivers.html">Drivers</a></li>
+                      <li><a href="supplyier">Our Supplyier</a></li>
                       <li class="has-submenu">
                         <a href="locations.html">Locations</a>
                         <ul class="sub-menu custom-list">
@@ -168,11 +166,8 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
                           <li><a href="#">United States</a></li>
                         </ul>
                       </li>
-					  <li class="has-submenu">
-						<a href="about.html">About</a>
-						  <ul class="sub-menu custom-list">
-							<li><a href="shortcodes.html">Shortcodes</a></li>
-						  </ul>
+					  <li >
+						  <a href="aboutus">About</a>
 						</li>
 						<li><a href="testimonials.html">Testimonials</a></li>
 						<li class="has-submenu">
@@ -181,12 +176,8 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
 							<li><a href="single_post.html">Single New Post</a></li>
 						  </ul>
 						</li>
-						<li class="has-submenu">
-						  <a href="#">Contact</a>
-						  <ul class="sub-menu custom-list">
-							<li><a href="contact1.html">Contact 1</a></li>
-							<li><a href="contact2.html">Contact 2</a></li>
-						  </ul>
+						<li >
+						  <a href="contact">Contact</a>
 						</li>
                     </ul>
                     <!--<ul class="nav navbar-nav navbar-right">
@@ -224,9 +215,9 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
             <div class="row">
 
               <!-- Start Widget-About -->
-              <div class="col-lg-4 col-md-4 widget widget-about">
+              <div class="col-lg-4 col-md-4 widget widget-about color white">
                 <h5>About Us</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Etiam sit amet lectus quis est congue mollis.</p>
+                {!!$data->aboutUs!!}
               </div>
               <!-- End Widget-About -->
 
@@ -244,8 +235,8 @@ $urlFromBack = Config::get('constants.myConstant.weburlpart');
               <div class="col-lg-4 col-md-4 widget widget-social">
                 <div class="findUs">
 					<ul>
-						<li><a target="blank" title="Facebook" href="https://www.facebook.com/aplusfreshshop?pnref=story"><img src="{{ asset('assets/img/fb-find-us.png') }}"></a></li>
-						<li><a target="blank" title="Twitter" href="https://twitter.com"><img src="{{ asset('assets/img/twitter-find-us.png') }}"></a></li>
+						<li><a target="blank" title="Facebook" href="{{'http://'.$data->facebook}}"><img src="{{ asset('assets/img/fb-find-us.png') }}"></a></li>
+						<li><a target="blank" title="Twitter" href="{{'http://'.$data->twitter}}"><img src="{{ asset('assets/img/twitter-find-us.png') }}"></a></li>
 						<li><a title="Customer serivce" href="/public/index/information"><img src="{{ asset('assets/img/ge-customer-service.png') }}"></a></li>
 					</ul>
 				</div>

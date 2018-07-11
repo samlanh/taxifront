@@ -11,13 +11,14 @@ use App\Supplier;
 use App\VehiclePrice;
 use App\VehiclePriceDetail;
 use App\VehicleType;
-
+use App\partnerservice;
+use App\Supplyier;
 class IndexController extends Controller
 {
 	
 	public function index(){
-		
-		return view("main/index");
+		//return view("main/index",['data' => partnerservice::partnerservice()]);
+		return view("main/index",['data' => Supplyier::Supplyier()]);
 	}
 	// public function result(Request $request){
  		

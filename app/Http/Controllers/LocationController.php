@@ -38,7 +38,7 @@ class LocationController extends Controller
   //       //return json_encode($location);
   //      // return response()->json(['response' => $location]);
 		return view("main/index")->with('data',$location);
-         return response()->json($location); 
+        return response()->json($location); 
         return null;
 
     }

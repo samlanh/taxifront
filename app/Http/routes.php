@@ -54,7 +54,9 @@ Route::post('/user/auth-signup', array(
  ));
 
 
-
+Route::get('/contact', 'ContactController@index');
+Route::get('/aboutus', 'AboutusController@index');
+Route::get('/supplyier', 'SupplyierController@index');
 
 // Route::group(['middlewareGroups' => ['web']], function () {
 

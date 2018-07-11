@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use DB;
 use App\Location;
+use App\Aboutus;
 class MainServiceProvider extends ServiceProvider
 {
     /**
@@ -17,10 +18,20 @@ class MainServiceProvider extends ServiceProvider
         //
         view()->composer('layout.main',function($view){
                  
-            $Location = Location::ActiveLocationName();    
-            $view->with(compact('Location'));
+            //$Location = Aboutus::ActiveLocationName();    
+            
+            $view->with('data',Aboutus::Aboutus()->first());
 
 
+
+            // $query="
+            //     SELECT
+            //         *
+            //      FROM 
+            //         tp_about_us
+            // ";
+            // $result = DB::select($query);
+            // return view('layout.main', ['data' => $result]);
         });
     }
 
